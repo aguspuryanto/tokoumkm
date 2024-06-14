@@ -1,5 +1,5 @@
 
-                <form action="/products/store" method="post" enctype="multipart/form-data">
+                <form action="/produk/store" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="nama_produk">Nama Produk</label>
                         <input type="text" class="form-control" id="nama_produk" name="nama_produk" required>

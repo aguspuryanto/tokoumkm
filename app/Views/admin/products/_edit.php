@@ -9,7 +9,7 @@
         <div class="card">
             <!-- <div class="card-header">Featured</div> -->
             <div class="card-body">
-                <form action="/products/update/<?= $product['id'] ?>" method="post" enctype="multipart/form-data">
+                <form action="/produk/update/<?= $product['id'] ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="gambar">Image</label>
                         <input type="file" class="form-control" id="gambar" name="gambar">
@@ -34,7 +34,7 @@
                 </form>
             </div>
         </div>
-        
+
     </div>
 
 <?= $this->endSection() ?>

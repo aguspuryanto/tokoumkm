@@ -16,7 +16,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="<?= base_url('dashboard') ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -33,28 +33,28 @@
             // 'Produk', 'Artikel', 'Konten Generator', 'Home Page', 'Pengaturan'
             $menuSidebar = [
                 array(
-                    'href' => 'products',
+                    'href' => base_url('produk'),
                     'icon' => 'fas fa-fw fa-shopping-cart',
                     'title' => 'Produk',
                     'show_menu' => true,
                     'submenu' => []
                 ),
                 array(
-                    'href' => 'artikel',
+                    'href' => base_url('artikel'),
                     'icon' => 'fas fa-fw fa-newspaper',
                     'title' => 'Artikel',
                     'show_menu' => true,
                     'submenu' => []
                 ),
                 array(
-                    'href' => 'konten-generator',
+                    'href' => base_url('konten-generator'),
                     'icon' => 'fas fa-fw fa-code',
                     'title' => 'Konten Generator',
                     'show_menu' => true,
                     'submenu' => []
                 ),
                 array(
-                    'href' => 'home-page',
+                    'href' => base_url('home-page'),
                     'icon' => 'fas fa-fw fa-home',
                     'title' => 'Home Page',
                     'show_menu' => true,
