@@ -5,6 +5,8 @@ namespace App\Controllers;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
 
+use App\Models\ProductModel;
+
 class Produk extends ResourceController
 {
     /**
@@ -14,7 +16,11 @@ class Produk extends ResourceController
      */
     public function index()
     {
-        //
+        $model = new ProductModel();
+        $data['products'] = $model->findAll();
+        
+        return view('admin/products/index', $data);
+        // return view('admin/produk');
     }
 
     /**
@@ -34,9 +40,26 @@ class Produk extends ResourceController
      *
      * @return ResponseInterface
      */
-    public function new()
+    public function store()
     {
-        //
+        $uploads_path = $this->ensureUploadsDirectoryExists();
+
+        $model = new ProductModel();
+        $file = $this->request->getFile('gambar');
+
+        if ($file->isValid() && !$file->hasMoved()) {
+            $fileName = $file->getRandomName();
+            $file->move($uploads_path, $fileName);
+
+            $model->save([
+                'gambar' => $fileName,
+                'nama_produk' => $this->request->getVar('nama_produk'),
+                'harga' => $this->request->getVar('harga'),
+                'status' => $this->request->getVar('status'),
+            ]);
+        }
+
+        return redirect()->to('/products');
     }
 
     /**
@@ -46,7 +69,7 @@ class Produk extends ResourceController
      */
     public function create()
     {
-        //
+        return view('admin/products/create');
     }
 
     /**
@@ -58,7 +81,10 @@ class Produk extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        $model = new ProductModel();
+        $data['product'] = $model->find($id);
+
+        return view('admin/products/edit', $data);
     }
 
     /**
@@ -70,7 +96,26 @@ class Produk extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $uploads_path = $this->ensureUploadsDirectoryExists();
+
+        $model = new ProductModel();
+        $file = $this->request->getFile('gambar');
+
+        $data = [
+            'nama_produk' => $this->request->getVar('nama_produk'),
+            'harga' => $this->request->getVar('harga'),
+            'status' => $this->request->getVar('status'),
+        ];
+
+        if ($file->isValid() && !$file->hasMoved()) {
+            $fileName = $file->getRandomName();
+            $file->move($uploads_path, $fileName);
+            $data['gambar'] = $fileName;
+        }
+
+        $model->update($id, $data);
+
+        return redirect()->to('/products');
     }
 
     /**
@@ -82,6 +127,25 @@ class Produk extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $model = new ProductModel();
+        $model->delete($id);
+
+        return redirect()->to('/products');
+    }
+
+    private function ensureUploadsDirectoryExists()
+    {
+        $dir = 'uploads/';
+
+        $allowYearMonth = true;
+        if($allowYearMonth) {
+            $dir .= date('Y') . '/' . date('m') . '/';
+        }
+
+        if (!is_dir($dir)) {
+            mkdir($dir, 0777, true);
+        }
+
+        return $dir;
     }
 }
