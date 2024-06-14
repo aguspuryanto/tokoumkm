@@ -23,7 +23,15 @@ class CreateProductsTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'deskripsi'   => [
+                'type'       => 'TEXT',
+                'null'       => true,
+            ],
             'harga'       => [
+                'type'       => 'DECIMAL',
+                'constraint' => '10,2',
+            ],
+            'harga_diskon' => [
                 'type'       => 'DECIMAL',
                 'constraint' => '10,2',
             ],
@@ -31,6 +39,18 @@ class CreateProductsTable extends Migration
                 'type'       => 'ENUM',
                 'constraint' => ['active', 'inactive'],
                 'default'    => 'active',
+            ],
+            'label'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'label_color' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'link_order'  => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ],
             'created_at'  => [
                 'type'       => 'DATETIME',
