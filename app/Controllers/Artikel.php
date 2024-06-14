@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ArtikelModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
 
@@ -14,9 +15,10 @@ class Artikel extends ResourceController
      */
     public function index()
     {
-        $model = new ArticleModel();
+        $model = new ArtikelModel();
         $data['articles'] = $model->findAll();
-        return view('articles/index', $data);
+
+        return view('admin/articles/index', $data);
     }
 
     /**
@@ -40,7 +42,7 @@ class Artikel extends ResourceController
     {
         $this->ensureUploadsDirectoryExists();
 
-        $model = new ArticleModel();
+        $model = new ArtikelModel();
         $file = $this->request->getFile('gambar');
 
         if ($file->isValid() && !$file->hasMoved()) {
@@ -57,7 +59,7 @@ class Artikel extends ResourceController
             ]);
         }
 
-        return redirect()->to('/articles');
+        return redirect()->to('/artikel');
     }
 
     /**
@@ -67,7 +69,7 @@ class Artikel extends ResourceController
      */
     public function create()
     {
-        return view('articles/create');
+        return view('admin/articles/_create');
     }
 
     /**
@@ -79,9 +81,10 @@ class Artikel extends ResourceController
      */
     public function edit($id = null)
     {
-        $model = new ArticleModel();
+        $model = new ArtikelModel();
         $data['article'] = $model->find($id);
-        return view('articles/edit', $data);
+
+        return view('admin/articles/_edit', $data);
     }
 
     /**
@@ -95,7 +98,7 @@ class Artikel extends ResourceController
     {
         $this->ensureUploadsDirectoryExists();
 
-        $model = new ArticleModel();
+        $model = new ArtikelModel();
         $file = $this->request->getFile('gambar');
 
         $data = [
@@ -113,7 +116,8 @@ class Artikel extends ResourceController
         }
 
         $model->update($id, $data);
-        return redirect()->to('/articles');
+
+        return redirect()->to('/artikel');
     }
 
     /**
@@ -125,9 +129,9 @@ class Artikel extends ResourceController
      */
     public function delete($id = null)
     {
-        $model = new ArticleModel();
+        $model = new ArtikelModel();
         $model->delete($id);
-        return redirect()->to('/articles');
+        return redirect()->to('/artikel');
     }
 
     private function ensureUploadsDirectoryExists()

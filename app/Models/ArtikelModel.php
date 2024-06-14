@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class ArtikelModel extends Model
 {
-    protected $table            = 'artikels';
+    protected $table            = 'articles';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields = ['judul', 'slug', 'deskripsi', 'gambar', 'label_seo', 'status'];
+    protected $allowedFields    = ['judul', 'slug', 'deskripsi', 'gambar', 'label_seo', 'status'];
 
     protected bool $allowEmptyInserts = false;
 
