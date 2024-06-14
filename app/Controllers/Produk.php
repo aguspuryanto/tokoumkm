@@ -69,7 +69,7 @@ class Produk extends ResourceController
      */
     public function create()
     {
-        return view('admin/products/create');
+        return view('admin/products/_create');
     }
 
     /**
@@ -84,7 +84,7 @@ class Produk extends ResourceController
         $model = new ProductModel();
         $data['product'] = $model->find($id);
 
-        return view('admin/products/edit', $data);
+        return view('admin/products/_edit', $data);
     }
 
     /**
