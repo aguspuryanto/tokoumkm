@@ -14,7 +14,9 @@ class Artikel extends ResourceController
      */
     public function index()
     {
-        //
+        $model = new ArticleModel();
+        $data['articles'] = $model->findAll();
+        return view('articles/index', $data);
     }
 
     /**
@@ -34,9 +36,28 @@ class Artikel extends ResourceController
      *
      * @return ResponseInterface
      */
-    public function new()
+    public function store()
     {
-        //
+        $this->ensureUploadsDirectoryExists();
+
+        $model = new ArticleModel();
+        $file = $this->request->getFile('gambar');
+
+        if ($file->isValid() && !$file->hasMoved()) {
+            $fileName = $file->getRandomName();
+            $file->move('uploads/', $fileName);
+
+            $model->save([
+                'judul' => $this->request->getVar('judul'),
+                'slug' => url_title($this->request->getVar('judul'), '-', true),
+                'deskripsi' => $this->request->getVar('deskripsi'),
+                'gambar' => $fileName,
+                'label_seo' => $this->request->getVar('label_seo'),
+                'status' => $this->request->getVar('status'),
+            ]);
+        }
+
+        return redirect()->to('/articles');
     }
 
     /**
@@ -46,7 +67,7 @@ class Artikel extends ResourceController
      */
     public function create()
     {
-        //
+        return view('articles/create');
     }
 
     /**
@@ -58,7 +79,9 @@ class Artikel extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        $model = new ArticleModel();
+        $data['article'] = $model->find($id);
+        return view('articles/edit', $data);
     }
 
     /**
@@ -70,7 +93,27 @@ class Artikel extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $this->ensureUploadsDirectoryExists();
+
+        $model = new ArticleModel();
+        $file = $this->request->getFile('gambar');
+
+        $data = [
+            'judul' => $this->request->getVar('judul'),
+            'slug' => url_title($this->request->getVar('judul'), '-', true),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'label_seo' => $this->request->getVar('label_seo'),
+            'status' => $this->request->getVar('status'),
+        ];
+
+        if ($file->isValid() && !$file->hasMoved()) {
+            $fileName = $file->getRandomName();
+            $file->move('uploads/', $fileName);
+            $data['gambar'] = $fileName;
+        }
+
+        $model->update($id, $data);
+        return redirect()->to('/articles');
     }
 
     /**
@@ -82,6 +125,16 @@ class Artikel extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $model = new ArticleModel();
+        $model->delete($id);
+        return redirect()->to('/articles');
+    }
+
+    private function ensureUploadsDirectoryExists()
+    {
+        $dir = 'uploads/';
+        if (!is_dir($dir)) {
+            mkdir($dir, 0777, true);
+        }
     }
 }
