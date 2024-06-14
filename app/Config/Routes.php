@@ -29,6 +29,6 @@ $routes->get('/artikel/edit/(:num)', 'Artikel::edit/$1');
 $routes->post('/artikel/update/(:num)', 'Artikel::update/$1');
 $routes->get('/artikel/delete/(:num)', 'Artikel::delete/$1');
 
-$routes->get('/konten-generator', 'KontenGenerator::index');
+$routes->get('/konten', 'Konten::index');
 $routes->get('/home-page', 'HomePage::index');
 $routes->get('/Pengaturan', 'Pengaturan::index');

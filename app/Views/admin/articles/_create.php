@@ -17,14 +17,17 @@
 
 <?= $this->endSection() ?>
 
+<?= $this->section('script') ?>
 <script>
 function slugify(content) {
 	return content.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
 }
 
 $(document).ready(function() {
-    $('#judul').mouseleave(function() {
-        $('#slug').val(slugify($(this).val()));
+    $("input#judul").change(function(){
+        $('input#slug').val(slugify($(this).val()));
     });
 });
 </script>
+
+<?= $this->endSection() ?>
