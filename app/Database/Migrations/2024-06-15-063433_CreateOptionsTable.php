@@ -32,7 +32,7 @@ class CreateOptionsTable extends Migration
                 'null'       => true,
             ],
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('option_id', true);
         $this->forge->createTable('tbl_options');
     }
 

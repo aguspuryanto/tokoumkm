@@ -1,4 +1,4 @@
-<form action="/settings/store" method="post" enctype="multipart/form-data">
+<form action="/home-page/store" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="logo">Banner Promo 1</label>
                 <input type="file" class="form-control" id="banner1" name="logo">

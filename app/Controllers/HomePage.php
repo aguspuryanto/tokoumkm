@@ -38,7 +38,7 @@ class HomePage extends ResourceController
      *
      * @return ResponseInterface
      */
-    public function new()
+    public function strore()
     {
         //
     }

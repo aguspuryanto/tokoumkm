@@ -1,4 +1,4 @@
-        <form action="/settings/store" method="post" enctype="multipart/form-data">
+        <form action="/home-page/store" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" id="title" name="title" required>

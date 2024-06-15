@@ -1,4 +1,4 @@
-<form action="/settings/store" method="post" enctype="multipart/form-data">
+<form action="/home-page/store" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="color">Color</label>
                 <input type="text" class="form-control" id="color" name="color" required>
