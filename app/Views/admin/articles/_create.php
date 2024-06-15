@@ -17,7 +17,7 @@
 
 <?= $this->endSection() ?>
 
-<?= $this->section('script') ?>
+<?= $this->section('javascript') ?>
 <script>
 function slugify(content) {
 	return content.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');

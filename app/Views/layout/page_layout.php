@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
+    <?= $this->renderSection('styles') ?>
 
 </head>
 

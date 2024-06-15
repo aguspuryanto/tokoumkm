@@ -20,21 +20,56 @@
             endforeach ?>
         </ul>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="tab-pane fade show active" id="pills-header" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="card">
                     <div class="card-body">
                         <?= $this->include('admin/home-page/_header') ?>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="tab-pane fade" id="pills-slider" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="card">
                     <div class="card-body">
                         <?= $this->include('admin/home-page/_slider') ?>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <div class="tab-pane fade" id="pills-banner" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <?= $this->include('admin/home-page/_banner') ?>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-benefit" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <?= $this->include('admin/home-page/_benefit') ?>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-product" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <?= $this->include('admin/home-page/_product') ?>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-article" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <?= $this->include('admin/home-page/_article') ?>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-testimony" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <?= $this->include('admin/home-page/_testimony') ?>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-footer" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <div class="card">
                     <div class="card-body">
                         <?= $this->include('admin/home-page/_footer') ?>
@@ -45,4 +80,19 @@
 
     </div>
 
+<?= $this->endSection() ?>
+
+<?= $this->section('styles') ?>
+<link href="vendor/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css" rel="stylesheet">
+<?= $this->endSection() ?>
+
+<?= $this->section('javascript') ?>
+<script src="vendor/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js"></script>
+<script>
+    $(function () {
+      // Basic instantiation:
+      $('#color').colorpicker();
+      
+    });
+</script>
 <?= $this->endSection() ?>
