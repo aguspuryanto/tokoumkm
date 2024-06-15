@@ -33,11 +33,11 @@ class CreateHomepageCopyrightTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('homepage_copyright');
+        $this->forge->createTable('homepage_footer_copyright');
     }
 
     public function down()
     {
-        $this->forge->dropTable('homepage_copyright');
+        $this->forge->dropTable('homepage_footer_copyright');
     }
 }
