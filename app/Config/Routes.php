@@ -45,9 +45,9 @@ $routes->post('/home-page/update/(:num)', 'HomePage::update/$1');
 $routes->get('/home-page/delete/(:num)', 'HomePage::delete/$1');
 
 // $routes->get('/Pengaturan', 'Pengaturan::index');
-$routes->get('/pengaturan', 'PengaturanController::index');
-$routes->get('/pengaturan/create', 'PengaturanController::create');
-$routes->post('/pengaturan/store', 'PengaturanController::store');
-$routes->get('/pengaturan/edit/(:num)', 'PengaturanController::edit/$1');
-$routes->post('/pengaturan/update/(:num)', 'PengaturanController::update/$1');
-$routes->get('/pengaturan/delete/(:num)', 'PengaturanController::delete/$1');
+$routes->get('/pengaturan', 'Pengaturan::index');
+$routes->get('/pengaturan/create', 'Pengaturan::create');
+$routes->post('/pengaturan/store', 'Pengaturan::store');
+$routes->get('/pengaturan/edit/(:num)', 'Pengaturan::edit/$1');
+$routes->post('/pengaturan/update/(:num)', 'Pengaturan::update/$1');
+$routes->get('/pengaturan/delete/(:num)', 'Pengaturan::delete/$1');

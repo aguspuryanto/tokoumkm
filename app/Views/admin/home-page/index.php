@@ -5,7 +5,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="mt-5">Home Page</h1>
+        <h1 class="mt-0">Home Page</h1>
         <!-- <div class="text-right">
             <a href="/konten/create" class="btn btn-primary mb-3">Add Content</a>
         </div> -->

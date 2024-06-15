@@ -15,7 +15,16 @@ class Pengaturan extends ResourceController
      */
     public function index()
     {
-        //
+        $model = new PengaturanModel();
+        $getAkun = $model->where('option_type', 'akun')->findAll();
+        $getSeo = $model->where('option_type', 'seo')->findAll();
+        $getMeta = $model->where('option_type', 'meta')->findAll();
+        
+        $data['akun'] = ($getAkun) ? $this->parseData($getAkun) : [];
+        $data['seo'] = ($getSeo) ? $this->parseData($getSeo) : [];
+        $data['meta'] = ($getMeta) ? $this->parseData($getMeta) : [];
+
+        return view('admin/settings/index', $data);
     }
 
     /**
@@ -37,29 +46,53 @@ class Pengaturan extends ResourceController
      */
     public function store()
     {
-        $model = new PengaturanModel();
-        // $favicon = $this->request->getFile('favicon');
-        // $logo = $this->request->getFile('logo');
+        // lakukan validasi
+        $validation =  \Config\Services::validation();
+        $form_type = $this->request->getVar('form_type');
+        // 
+        if($form_type == 'akun'){
+            $validation->setRules(['no_whatsapp' => 'required']);
+            $validation->setRules(['msg_whatsapp' => 'required']);            
+        }
 
-        // $faviconName = $favicon->isValid() && !$favicon->hasMoved() ? $favicon->getRandomName() : null;
-        // $logoName = $logo->isValid() && !$logo->hasMoved() ? $logo->getRandomName() : null;
+        if($form_type == 'meta'){
+            $validation->setRules(['id_pixel' => 'required']);
+            $validation->setRules(['event' => 'required']);
+        }
 
-        // if ($faviconName) {
-        //     $favicon->move('uploads/', $faviconName);
-        // }
+        if($form_type == 'seo'){
+            $validation->setRules(['google_analytics' => 'required']);
+            $validation->setRules(['google_search_console' => 'required']);
+        }
 
-        // if ($logoName) {
-        //     $logo->move('uploads/', $logoName);
-        // }
+        $isDataValid = $validation->withRequest($this->request)->run();
 
-        $model->save([
-            'option_name'       => $this->request->getVar('title'),
-            'option_value' => $this->request->getVar('description'),
-            'option_type'       => $this->request->getVar('color'),
-            'tampil'      => $this->request->getVar('tampil'),
-        ]);
+        // jika data valid, simpan ke database
+        if($isDataValid){
 
-        return redirect()->to('/pengaturan');
+            $model = new PengaturanModel();            
+            $pdata = $_POST;
+            unset($pdata['submit']);
+            $form_type = $this->request->getVar('form_type');
+
+            foreach ($pdata as $key => $value) {
+                if($key != 'form_type'){
+                    $model->save([
+                        'option_name' => $key,
+                        'option_value' => $value,
+                        'option_type' => $form_type,
+                        'tampil' => 1
+                    ]);
+                }
+            }
+
+            return redirect()->to('/pengaturan')->with('msg', '<div class="alert alert-success" role="alert">Data disimpan</div>');
+        } else {
+            // echo $validation->listErrors();
+            return redirect()->to('/pengaturan')->with('msg', '<div class="alert alert-danger" role="alert">' . $validation->listErrors() . '</div>');
+        }
+
+        // return redirect()->to('/pengaturan')->with('msg', 'Data disimpan');
     }
 
     /**
@@ -106,5 +139,22 @@ class Pengaturan extends ResourceController
     public function delete($id = null)
     {
         //
+    }
+
+    private function parseData($array) {
+
+        foreach ($array as $key => $value) {
+            if($value['option_name']=='no_whatsapp' || $value['option_name']=='msg_whatsapp') {
+                // echo $value['option_name'] . ' : ' . $value['option_value'] . '<br>';
+                $data[$value['option_name']] =$value['option_value'];
+            }
+
+            if($value['option_name']=='id_pixel' || $value['option_name']=='event' || $value['option_name']=='google_analytics' || $value['option_name']=='google_search_console') {
+                // echo $value['option_name'] . ' : ' . $value['option_value'] . '<br>';
+                $data[$value['option_name']] = $value['option_value'];
+            }
+        }
+
+        return ($data) ?? [];
     }
 }
