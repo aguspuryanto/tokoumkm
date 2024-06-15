@@ -14,7 +14,11 @@ class HomePage extends ResourceController
      */
     public function index()
     {
-        //
+        // $model = new ContentModel();
+        // $data['contents'] = $model->findAll();
+        $data['navlink'] = ['Header', 'Slider', 'Banner', 'Benefit', 'Product', 'Article', 'Testimony', 'Footer'];
+
+        return view('admin/home-page/index', $data);
     }
 
     /**
