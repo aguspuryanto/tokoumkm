@@ -1,4 +1,4 @@
-<form action="/home-page/store" method="post" enctype="multipart/form-data">
+<form action="/home-page/store" method="post">
             <div class="form-group">
                 <label for="color">Nama Usaha</label>
                 <input type="text" class="form-control" id="nama_usaha" name="nama_usaha" required>

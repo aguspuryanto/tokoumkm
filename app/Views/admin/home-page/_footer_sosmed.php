@@ -1,4 +1,4 @@
-<form action="/home-page/store" method="post" enctype="multipart/form-data">
+<form action="/home-page/store" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="color">Link Profile Facebook</label>

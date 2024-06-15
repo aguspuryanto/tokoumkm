@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class HomePageBenefitModel extends Model
 {
-    protected $table            = 'homepagebenefits';
+    protected $table            = 'homepage_benefit';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['judul1', 'keterangan1', 'banner1', 'judul2', 'keterangan2', 'banner2', 'judul3', 'keterangan3', 'banner3'];
 
     protected bool $allowEmptyInserts = false;
 

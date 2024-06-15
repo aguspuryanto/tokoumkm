@@ -1,3 +1,6 @@
+<?php
+echo json_encode($footer_copyright);
+?>
 
 <div class="card">
     <div class="card-header">
@@ -22,7 +25,7 @@
           <?= $this->include('admin/home-page/_footer_sosmed') ?>
         </div>
         <div class="tab-pane fade" id="footer-copyright" role="tabpanel" aria-labelledby="footer-copyright-tab">    
-          <?= $this->include('admin/home-page/_footer_copyright') ?>
+          <?= $this->include('admin/home-page/_footer_copyright', ['footer_copyright' => $footer_copyright]) ?>
         </div>
       </div>
     </div>

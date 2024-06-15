@@ -6,18 +6,18 @@ use CodeIgniter\Model;
 
 class HomePageFooterCopyrightModel extends Model
 {
-    protected $table            = 'homepagefootercopyrights';
+    protected $table            = 'homepage_footer_copyright';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['copyright', 'tahun'];
 
     protected bool $allowEmptyInserts = false;
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

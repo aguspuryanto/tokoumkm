@@ -6,18 +6,18 @@ use CodeIgniter\Model;
 
 class HomePageFooterProfilModel extends Model
 {
-    protected $table            = 'homepagefooterprofils';
+    protected $table            = 'homepage_footer_profil';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nama_usaha', 'alamat_usaha', 'wa_usaha', 'color'];
 
     protected bool $allowEmptyInserts = false;
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

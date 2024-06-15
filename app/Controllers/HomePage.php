@@ -14,9 +14,13 @@ class HomePage extends ResourceController
      */
     public function index()
     {
-        // $model = new ContentModel();
-        // $data['contents'] = $model->findAll();
         $data['navlink'] = ['Header', 'Slider', 'Banner', 'Benefit', 'Product', 'Article', 'Testimony', 'Footer'];
+
+        $data['footer_profile']  = [];
+        $data['footer_sosmed']  = [];
+        $getFooterCopyright = new \App\Models\HomePageFooterCopyrightModel();
+        $data['footer_copyright'] = $getFooterCopyright->findAll();
+        echo json_encode($data['footer_copyright']); // die();
 
         return view('admin/home-page/index', $data);
     }
@@ -38,32 +42,35 @@ class HomePage extends ResourceController
      *
      * @return ResponseInterface
      */
-    public function strore()
+    public function store()
     {
         // lakukan validasi
         $validation =  \Config\Services::validation();
         $form_type = $this->request->getVar('form_type');
         // 
-        if($form_type == 'akun'){
-            // $validation->setRules(['no_whatsapp' => 'required']);
-            // $validation->setRules(['msg_whatsapp' => 'required']);            
+        if($form_type == 'copyright'){
+            $validation->setRules(['copyright' => 'required']);
+            $validation->setRules(['tahun' => 'required']);            
         }
 
         $isDataValid = $validation->withRequest($this->request)->run();
         
-        if($this->request->getVar('copyright')){
+        // jika data valid, simpan ke database
+        if($isDataValid){
             
             $formModel = new \App\Models\HomePageFooterCopyrightModel();
-
             $data = [
                 'copyright' => $this->request->getVar('copyright'),
                 'tahun'  => $this->request->getVar('tahun'),
             ];
 
             $formModel->save($data);
-        }
 
-        return redirect()->to('/home-page');
+            return redirect()->to('/home-page')->with('msg', '<div class="alert alert-success" role="alert">Data disimpan</div>');
+        } else {
+            // echo $validation->listErrors();
+            return redirect()->to('/home-page')->with('msg', '<div class="alert alert-danger" role="alert">' . $validation->listErrors() . '</div>');
+        }
     }
 
     /**

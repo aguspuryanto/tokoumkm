@@ -4,6 +4,10 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
+        <?php if (session('msg') !== null) : ?>
+            <?= session('msg'); ?>
+        <?php endif; ?>
+
         <!-- Page Heading -->
         <h1 class="mt-0">Home Page</h1>
         <!-- <div class="text-right">
@@ -70,7 +74,9 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-footer" role="tabpanel" aria-labelledby="pills-contact-tab">
-                <?= $this->include('admin/home-page/_footer') ?>
+                <?= $this->include('admin/home-page/_footer', [
+                    'footer_copyright' => $footer_copyright
+                ]) ?>
             </div>
         </div>
 
