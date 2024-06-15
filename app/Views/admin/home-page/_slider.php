@@ -26,5 +26,6 @@
                     <option value="no">No</option>
                 </select>
             </div>
+            <input type="hidden" name="formtype" value="slider">
             <button type="submit" class="btn btn-primary">Add Setting</button>
         </form>

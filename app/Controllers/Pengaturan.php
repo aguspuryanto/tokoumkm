@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\PengaturanModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
 
@@ -34,9 +35,31 @@ class Pengaturan extends ResourceController
      *
      * @return ResponseInterface
      */
-    public function new()
+    public function store()
     {
-        //
+        $model = new PengaturanModel();
+        // $favicon = $this->request->getFile('favicon');
+        // $logo = $this->request->getFile('logo');
+
+        // $faviconName = $favicon->isValid() && !$favicon->hasMoved() ? $favicon->getRandomName() : null;
+        // $logoName = $logo->isValid() && !$logo->hasMoved() ? $logo->getRandomName() : null;
+
+        // if ($faviconName) {
+        //     $favicon->move('uploads/', $faviconName);
+        // }
+
+        // if ($logoName) {
+        //     $logo->move('uploads/', $logoName);
+        // }
+
+        $model->save([
+            'option_name'       => $this->request->getVar('title'),
+            'option_value' => $this->request->getVar('description'),
+            'option_type'       => $this->request->getVar('color'),
+            'tampil'      => $this->request->getVar('tampil'),
+        ]);
+
+        return redirect()->to('/pengaturan');
     }
 
     /**

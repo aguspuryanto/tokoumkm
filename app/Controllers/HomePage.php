@@ -40,7 +40,30 @@ class HomePage extends ResourceController
      */
     public function strore()
     {
-        //
+        helper(['form']);
+        
+        if($this->request->getVar('copyright')){
+            
+            // $rules = [
+            //     'name' => 'required|min_length[3]',
+            //     'email' => 'required|valid_email',
+            //     'phone' => 'required|numeric|max_length[10]'
+            // ];
+            // if($this->validate($rules)){
+                $formModel = new \App\Models\HomePageFooterCopyrightModel();
+
+                $data = [
+                    'copyright' => $this->request->getVar('copyright'),
+                    'tahun'  => $this->request->getVar('tahun'),
+                ];
+
+                $formModel->save($data);
+            // }else{
+            //     $data['validation'] = $this->validator;
+            // }
+        }
+
+        return redirect()->to('/home-page');
     }
 
     /**

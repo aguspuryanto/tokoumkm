@@ -38,4 +38,16 @@ $routes->post('/konten/update/(:num)', 'Kontent::update/$1');
 $routes->get('/konten/delete/(:num)', 'Kontent::delete/$1');
 
 $routes->get('/home-page', 'HomePage::index');
-$routes->get('/Pengaturan', 'Pengaturan::index');
+$routes->get('/home-page/create', 'HomePage::create');
+$routes->post('/home-page/store', 'HomePage::store');
+$routes->get('/home-page/edit/(:num)', 'HomePage::edit/$1');
+$routes->post('/home-page/update/(:num)', 'HomePage::update/$1');
+$routes->get('/home-page/delete/(:num)', 'HomePage::delete/$1');
+
+// $routes->get('/Pengaturan', 'Pengaturan::index');
+$routes->get('/pengaturan', 'PengaturanController::index');
+$routes->get('/pengaturan/create', 'PengaturanController::create');
+$routes->post('/pengaturan/store', 'PengaturanController::store');
+$routes->get('/pengaturan/edit/(:num)', 'PengaturanController::edit/$1');
+$routes->post('/pengaturan/update/(:num)', 'PengaturanController::update/$1');
+$routes->get('/pengaturan/delete/(:num)', 'PengaturanController::delete/$1');

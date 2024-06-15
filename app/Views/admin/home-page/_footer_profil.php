@@ -22,5 +22,6 @@
                     <option value="no">No</option>
                 </select>
             </div>
+            <input type="hidden" name="formtype" value="profil">
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>

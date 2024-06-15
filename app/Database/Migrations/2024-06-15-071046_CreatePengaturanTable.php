@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateOptionsTable extends Migration
+class CreatePengaturanTable extends Migration
 {
     public function up()
     {
@@ -19,13 +19,18 @@ class CreateOptionsTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'option_value'       => [
+            'option_value' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'option_type'       => [
+            'option_type'     => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
+            ],
+            'tampil'      => [
+                'type'       => 'ENUM',
+                'constraint' => ['yes', 'no'],
+                'default'    => 'yes',
             ],
             'created_at'  => [
                 'type'       => 'DATETIME',
@@ -37,11 +42,11 @@ class CreateOptionsTable extends Migration
             ],
         ]);
         $this->forge->addKey('option_id', true);
-        $this->forge->createTable('tbl_options');
+        $this->forge->createTable('pengaturan');
     }
 
     public function down()
     {
-        $this->forge->dropTable('tbl_options');
+        $this->forge->dropTable('pengaturan');
     }
 }

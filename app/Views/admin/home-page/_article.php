@@ -1,4 +1,4 @@
-<form action="/home-page/store" method="post" enctype="multipart/form-data">
+<form action="/home-page/store" method="post">
             <div class="form-group">
                 <label for="color">Color</label>
                 <input type="text" class="form-control" id="color" name="color" required>
@@ -10,5 +10,6 @@
                     <option value="no">No</option>
                 </select>
             </div>
+            <input type="hidden" name="formtype" value="article">
             <button type="submit" class="btn btn-primary">Add Setting</button>
         </form>

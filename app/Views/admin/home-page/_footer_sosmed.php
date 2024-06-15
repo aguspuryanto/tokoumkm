@@ -83,6 +83,7 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" name="formtype" value="sosmed">
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
 
