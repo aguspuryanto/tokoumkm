@@ -85,11 +85,13 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>
-<link href="vendor/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css" rel="stylesheet">
+<!-- <link href="vendor/itsjavi/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/css/bootstrap-colorpicker.min.css"/>
 <?= $this->endSection() ?>
 
 <?= $this->section('javascript') ?>
-<script src="vendor/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js"></script>
+<!-- <script src="vendor/itsjavi/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/js/bootstrap-colorpicker.min.js"> </script>
 <script>
     $(function () {
       // Basic instantiation:

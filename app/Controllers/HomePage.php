@@ -48,6 +48,11 @@ class HomePage extends ResourceController
         $validation =  \Config\Services::validation();
         $form_type = $this->request->getVar('form_type');
         // 
+        if($form_type == 'header'){
+            $validation->setRules(['title' => 'required']);
+            $validation->setRules(['description' => 'required']);
+        }
+
         if($form_type == 'copyright'){
             $validation->setRules(['copyright' => 'required']);
             $validation->setRules(['tahun' => 'required']);            
@@ -58,13 +63,25 @@ class HomePage extends ResourceController
         // jika data valid, simpan ke database
         if($isDataValid){
             
-            $formModel = new \App\Models\HomePageFooterCopyrightModel();
-            $data = [
-                'copyright' => $this->request->getVar('copyright'),
-                'tahun'  => $this->request->getVar('tahun'),
-            ];
+            if($form_type == 'header'){
+                $formModel = new \App\Models\HomePageHeaderModel();
+                $data = [
+                    'title' => $this->request->getVar('title'),
+                    'description' => $this->request->getVar('description'),
+                ];
 
-            $formModel->save($data);
+                $formModel->save($data);
+            }
+
+            if($form_type == 'copyright'){
+                $formModel = new \App\Models\HomePageFooterCopyrightModel();
+                $data = [
+                    'copyright' => $this->request->getVar('copyright'),
+                    'tahun'  => $this->request->getVar('tahun'),
+                ];
+
+                $formModel->save($data);
+            }
 
             return redirect()->to('/home-page')->with('msg', '<div class="alert alert-success" role="alert">Data disimpan</div>');
         } else {

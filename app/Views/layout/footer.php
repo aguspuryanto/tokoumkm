@@ -46,6 +46,7 @@
     
     <!-- Bootstrap core JavaScript-->
     <script src="<?= base_url('plugins/jquery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('plugins/bootstrap/js/popper.min.js') ?>"></script>
     <script src="<?= base_url('plugins/bootstrap/js/bootstrap.min.js') ?>"></script>
 
     <!-- Custom scripts for all pages-->
