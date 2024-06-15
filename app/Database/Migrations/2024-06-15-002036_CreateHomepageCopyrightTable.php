@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateHomepageProductTable extends Migration
+class CreateHomepageCopyrightTable extends Migration
 {
     public function up()
     {
@@ -15,14 +15,13 @@ class CreateHomepageProductTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'color'       => [
+            'copyright'       => [
                 'type'       => 'VARCHAR',
-                'constraint' => '7',
+                'constraint' => '255',
             ],
-            'tampil'      => [
-                'type'       => 'ENUM',
-                'constraint' => ['yes', 'no'],
-                'default'    => 'yes',
+            'tahun'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '4',
             ],
             'created_at'  => [
                 'type'       => 'DATETIME',
@@ -34,11 +33,11 @@ class CreateHomepageProductTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('homepage_product');
+        $this->forge->createTable('homepage_copyright');
     }
 
     public function down()
     {
-        $this->forge->dropTable('homepage_product');
+        $this->forge->dropTable('homepage_copyright');
     }
 }
