@@ -1,22 +1,29 @@
-<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
-  </li>
-</ul>
-<div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-    <?= $this->include('admin/home-page/_footer_profil') ?>
-  </div>
-  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-    <?= $this->include('admin/home-page/_footer_sosmed') ?>
-  </div>
-  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">    
-    <?= $this->include('admin/home-page/_footer_copyright') ?>
-  </div>
+
+<div class="card">
+    <div class="card-header">
+      <ul class="nav nav-pills mb-0" id="footer-tab" role="tablist">
+          <li class="nav-item">
+              <a class="nav-link active" id="footer-profil-tab" data-toggle="pill" href="#footer-profil" role="tab" aria-controls="footer-profil" aria-selected="true">Profile</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="footer-sosmed-tab" data-toggle="pill" href="#footer-sosmed" role="tab" aria-controls="footer-sosmed" aria-selected="false">Social Media</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="footer-copyright-tab" data-toggle="pill" href="#footer-copyright" role="tab" aria-controls="footer-copyright" aria-selected="false">Copyright</a>
+          </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="tab-content" id="footer-tabContent">
+        <div class="tab-pane fade show active" id="footer-profil" role="tabpanel" aria-labelledby="footer-profil-tab">
+          <?= $this->include('admin/home-page/_footer_profil') ?>
+        </div>
+        <div class="tab-pane fade" id="footer-sosmed" role="tabpanel" aria-labelledby="footer-sosmed-tab">
+          <?= $this->include('admin/home-page/_footer_sosmed') ?>
+        </div>
+        <div class="tab-pane fade" id="footer-copyright" role="tabpanel" aria-labelledby="footer-copyright-tab">    
+          <?= $this->include('admin/home-page/_footer_copyright') ?>
+        </div>
+      </div>
+    </div>
 </div>

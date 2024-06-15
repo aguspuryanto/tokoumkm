@@ -70,11 +70,7 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-footer" role="tabpanel" aria-labelledby="pills-contact-tab">
-                <div class="card">
-                    <div class="card-body">
-                        <?= $this->include('admin/home-page/_footer') ?>
-                    </div>
-                </div>
+                <?= $this->include('admin/home-page/_footer') ?>
             </div>
         </div>
 
