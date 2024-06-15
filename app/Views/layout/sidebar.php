@@ -47,7 +47,7 @@
                     'submenu' => []
                 ),
                 array(
-                    'href' => base_url('konten-generator'),
+                    'href' => base_url('konten'),
                     'icon' => 'fas fa-fw fa-code',
                     'title' => 'Konten Generator',
                     'show_menu' => true,

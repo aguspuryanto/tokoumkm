@@ -29,6 +29,13 @@ $routes->get('/artikel/edit/(:num)', 'Artikel::edit/$1');
 $routes->post('/artikel/update/(:num)', 'Artikel::update/$1');
 $routes->get('/artikel/delete/(:num)', 'Artikel::delete/$1');
 
-$routes->get('/konten', 'Konten::index');
+// $routes->get('/konten', 'Konten::index');
+$routes->get('/konten', 'Kontent::index');
+$routes->get('/konten/create', 'Kontent::create');
+$routes->post('/konten/store', 'Kontent::store');
+$routes->get('/konten/edit/(:num)', 'Kontent::edit/$1');
+$routes->post('/konten/update/(:num)', 'Kontent::update/$1');
+$routes->get('/konten/delete/(:num)', 'Kontent::delete/$1');
+
 $routes->get('/home-page', 'HomePage::index');
 $routes->get('/Pengaturan', 'Pengaturan::index');

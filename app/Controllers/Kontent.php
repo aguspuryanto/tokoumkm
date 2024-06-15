@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ContentModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
 
@@ -14,7 +15,10 @@ class Kontent extends ResourceController
      */
     public function index()
     {
-        //
+        $model = new ContentModel();
+        $data['contents'] = $model->findAll();
+
+        return view('admin/contents/index', $data);
     }
 
     /**
@@ -34,9 +38,19 @@ class Kontent extends ResourceController
      *
      * @return ResponseInterface
      */
-    public function new()
+    public function store()
     {
-        //
+        $model = new ContentModel();
+        $model->save([
+            'list_kata_kunci_target' => $this->request->getVar('list_kata_kunci_target'),
+            'list_buying_keyword'    => $this->request->getVar('list_buying_keyword'),
+            'list_kata_bombastis'    => $this->request->getVar('list_kata_bombastis'),
+            'nomer_wa'               => $this->request->getVar('nomer_wa'),
+            'deskripsi_utama'        => $this->request->getVar('deskripsi_utama'),
+            'list_kota_target'       => $this->request->getVar('list_kota_target'),
+        ]);
+
+        return redirect()->to('/konten');
     }
 
     /**
@@ -46,7 +60,7 @@ class Kontent extends ResourceController
      */
     public function create()
     {
-        //
+        return view('admin/contents/_create');
     }
 
     /**
@@ -58,7 +72,10 @@ class Kontent extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        $model = new ContentModel();
+        $data['content'] = $model->find($id);
+
+        return view('admin/contents/_edit', $data);
     }
 
     /**
@@ -70,7 +87,19 @@ class Kontent extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $model = new ContentModel();
+        $data = [
+            'list_kata_kunci_target' => $this->request->getVar('list_kata_kunci_target'),
+            'list_buying_keyword'    => $this->request->getVar('list_buying_keyword'),
+            'list_kata_bombastis'    => $this->request->getVar('list_kata_bombastis'),
+            'nomer_wa'               => $this->request->getVar('nomer_wa'),
+            'deskripsi_utama'        => $this->request->getVar('deskripsi_utama'),
+            'list_kota_target'       => $this->request->getVar('list_kota_target'),
+        ];
+
+        $model->update($id, $data);
+
+        return redirect()->to('/konten');
     }
 
     /**
@@ -82,6 +111,9 @@ class Kontent extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $model = new ContentModel();
+        $model->delete($id);
+
+        return redirect()->to('/konten');
     }
 }
