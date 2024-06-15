@@ -1,39 +1,39 @@
 <form action="/home-page/store" method="post" enctype="multipart/form-data">
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="logo">Testimony 1</label>
                 <input type="file" class="form-control" id="banner1" name="textarea">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="logo">Judul</label>
                 <input type="text" class="form-control" id="judul1" name="judul1">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="logo">Keterangan</label>
                 <textarea rows="5" type="text" class="form-control" id="keterangan1" name="keterangan1"></textarea>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="logo">Testimony 2</label>
                 <input type="file" class="form-control" id="banner2" name="banner2">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="logo">Judul</label>
                 <input type="text" class="form-control" id="judul2" name="judul2">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="logo">Keterangan</label>
                 <textarea rows="5" type="text" class="form-control" id="keterangan2" name="keterangan2"></textarea>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="logo">Testimony 3</label>
                 <input type="file" class="form-control" id="banner3" name="banner3">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="logo">Judul</label>
                 <input type="text" class="form-control" id="judul3" name="judul3">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="logo">Keterangan</label>
                 <textarea rows="5" type="text" class="form-control" id="keterangan3" name="keterangan3"></textarea>
             </div>
