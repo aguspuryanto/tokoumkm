@@ -1,7 +1,3 @@
-<?php
-echo json_encode($footer_copyright);
-?>
-
 <div class="card">
     <div class="card-header">
       <ul class="nav nav-pills mb-0" id="footer-tab" role="tablist">

@@ -17,7 +17,12 @@
             </div>
             <div class="form-group">
                 <label for="color">Color</label>
-                <input type="text" class="form-control" id="color" name="color" required>
+                <div class="input-group colorpicker-component">
+                    <input type="text" class="form-control" id="color" name="color" required>
+                    <span class="input-group-append">
+                        <span class="input-group-text colorpicker-input-addon"><i style="background-color: rgb(0, 170, 187);"></i></span>
+                    </span>
+                </div>
             </div>
             <div class="form-group">
                 <label for="tampil">Tampil</label>

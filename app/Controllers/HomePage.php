@@ -20,7 +20,7 @@ class HomePage extends ResourceController
         $data['footer_sosmed']  = [];
         $getFooterCopyright = new \App\Models\HomePageFooterCopyrightModel();
         $data['footer_copyright'] = $getFooterCopyright->findAll();
-        echo json_encode($data['footer_copyright']); // die();
+        // echo json_encode($data['footer_copyright']); // die();
 
         return view('admin/home-page/index', $data);
     }
