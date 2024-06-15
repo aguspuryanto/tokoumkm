@@ -7,6 +7,6 @@
                 <label for="color">Tahun</label>
                 <input type="text" class="form-control" id="tahun" name="tahun" required>
             </div>
-            <input type="hidden" name="formtype" value="copyright">
+            <input type="hidden" name="form_type" value="copyright">
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>

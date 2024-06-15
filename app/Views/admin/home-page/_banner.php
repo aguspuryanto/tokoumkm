@@ -22,6 +22,6 @@
                     <option value="no">No</option>
                 </select>
             </div>
-            <input type="hidden" name="formtype" value="banner">
+            <input type="hidden" name="form_type" value="banner">
             <button type="submit" class="btn btn-primary">Add Setting</button>
         </form>

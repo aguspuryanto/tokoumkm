@@ -40,27 +40,27 @@ class HomePage extends ResourceController
      */
     public function strore()
     {
-        helper(['form']);
+        // lakukan validasi
+        $validation =  \Config\Services::validation();
+        $form_type = $this->request->getVar('form_type');
+        // 
+        if($form_type == 'akun'){
+            // $validation->setRules(['no_whatsapp' => 'required']);
+            // $validation->setRules(['msg_whatsapp' => 'required']);            
+        }
+
+        $isDataValid = $validation->withRequest($this->request)->run();
         
         if($this->request->getVar('copyright')){
             
-            // $rules = [
-            //     'name' => 'required|min_length[3]',
-            //     'email' => 'required|valid_email',
-            //     'phone' => 'required|numeric|max_length[10]'
-            // ];
-            // if($this->validate($rules)){
-                $formModel = new \App\Models\HomePageFooterCopyrightModel();
+            $formModel = new \App\Models\HomePageFooterCopyrightModel();
 
-                $data = [
-                    'copyright' => $this->request->getVar('copyright'),
-                    'tahun'  => $this->request->getVar('tahun'),
-                ];
+            $data = [
+                'copyright' => $this->request->getVar('copyright'),
+                'tahun'  => $this->request->getVar('tahun'),
+            ];
 
-                $formModel->save($data);
-            // }else{
-            //     $data['validation'] = $this->validator;
-            // }
+            $formModel->save($data);
         }
 
         return redirect()->to('/home-page');

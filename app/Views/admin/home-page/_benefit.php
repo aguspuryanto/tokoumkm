@@ -55,6 +55,6 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="formtype" value="benefit">
+            <input type="hidden" name="form_type" value="benefit">
             <button type="submit" class="btn btn-primary">Add Setting</button>
         </form>

@@ -10,6 +10,6 @@
                     <option value="no">No</option>
                 </select>
             </div>
-            <input type="hidden" name="formtype" value="product">
+            <input type="hidden" name="form_type" value="product">
             <button type="submit" class="btn btn-primary">Add Setting</button>
         </form>
