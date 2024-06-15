@@ -1,24 +1,38 @@
+<?php
+if(!empty($header) && is_array($header)) $header = $header[0];
+?>
         <form id="formHeader" action="/home-page/store" method="post" enctype="multipart/form-data">
+            <?= csrf_field() ?>
             <div class="form-group col-md-6">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" name="title" required>
+                <input type="text" class="form-control" id="title" name="title" value="<?= $header['title'] ?>" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="description">Description</label>
-                <textarea class="form-control" id="description" name="description" required></textarea>
+                <textarea class="form-control" id="description" name="description" required><?= $header['description'] ?></textarea>
             </div>
             <div class="form-group col-md-6">
                 <label for="favicon">Favicon</label>
                 <input type="file" class="form-control" id="favicon" name="favicon">
+                <div id="previewFavicon">
+                    <?php if($header['favicon']): ?>
+                        <img src="<?= base_url('uploads/'.$header['favicon']) ?>" class="img-thumbnail">
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="form-group col-md-6">
                 <label for="logo">Logo</label>
                 <input type="file" class="form-control" id="logo" name="logo">
+                <div id="previewLogo">
+                    <?php if($header['logo']): ?>
+                        <img src="<?= base_url('uploads/'.$header['logo']) ?>" class="img-thumbnail">
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="form-group col-md-6">
                 <label for="color">Color</label>
-                <div class="input-group colorpicker-component">
-                    <input type="text" class="form-control" id="color" name="color" value="rgb(255, 128, 0)" required>
+                <div id="cpHeader" class="input-group colorpicker-component">
+                    <input type="text" class="form-control" id="color" name="color" value="<?= ($header['color']) ? $header['color'] : '#305AA2' ?>" required>
                     <span class="input-group-append">
                         <span class="input-group-text colorpicker-input-addon"><i style="background-color: rgb(0, 170, 187);"></i></span>
                     </span>
@@ -27,19 +41,21 @@
             <div class="form-group col-md-6">
                 <label for="tampil">Tampil</label>
                 <select class="form-control" id="tampil" name="tampil">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option value="yes" <?= ($header['tampil'] == 'yes') ? 'selected' : '' ?>>Yes</option>
+                    <option value="no" <?= ($header['tampil'] == 'no') ? 'selected' : '' ?>>No</option>
                 </select>
             </div>
             <input type="hidden" name="form_type" value="header">
-            <button type="submit" class="btn btn-primary">Add Setting</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
 
 <?= $this->section('javascript') ?>
 <script>
     $(function () {
-      // Basic instantiation:
-      $('#color').colorpicker();
+        // Basic instantiation:
+        $('#cpHeader').colorpicker({
+            format: 'auto'
+        });
       
     });
 </script>

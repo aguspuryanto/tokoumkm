@@ -179,4 +179,14 @@
 
                 </div>
                 <!-- /.container-fluid -->
+
+<?= $this->endSection() ?>
+
+<?= $this->section('chartjs') ?>
+    <!-- Page level plugins -->
+    <script src="<?= base_url('plugins/chart.js/Chart.min.js') ?>"></script>
+    
+    <!-- Page level custom scripts -->
+    <script src="<?= base_url('js/demo/chart-area-demo.js') ?>"></script>
+    <script src="<?= base_url('js/demo/chart-pie-demo.js') ?>"></script>
 <?= $this->endSection() ?>

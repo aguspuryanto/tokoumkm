@@ -27,55 +27,57 @@
             <div class="tab-pane fade show active" id="pills-header" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="card">
                     <div class="card-body">
-                        <?= $this->include('admin/home-page/_header') ?>
+                        <?= $this->include('admin/home-page/_header', ['header' => $header]) ?>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-slider" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="card">
                     <div class="card-body">
-                        <?= $this->include('admin/home-page/_slider') ?>
+                        <?= $this->include('admin/home-page/_slider', ['slider' => $slider]) ?>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-banner" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="card">
                     <div class="card-body">
-                        <?= $this->include('admin/home-page/_banner') ?>
+                        <?= $this->include('admin/home-page/_banner', ['banner' => $banner]) ?>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-benefit" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="card">
                     <div class="card-body">
-                        <?= $this->include('admin/home-page/_benefit') ?>
+                        <?= $this->include('admin/home-page/_benefit', ['benefit' => $benefit]) ?>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-product" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="card">
                     <div class="card-body">
-                        <?= $this->include('admin/home-page/_product') ?>
+                        <?= $this->include('admin/home-page/_product', ['product' => $product]) ?>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-article" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="card">
                     <div class="card-body">
-                        <?= $this->include('admin/home-page/_article') ?>
+                        <?= $this->include('admin/home-page/_article', ['article' => $article]) ?>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-testimony" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="card">
                     <div class="card-body">
-                        <?= $this->include('admin/home-page/_testimony') ?>
+                        <?= $this->include('admin/home-page/_testimony', ['testimony' => $testimony]) ?>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-footer" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <?= $this->include('admin/home-page/_footer', [
-                    'footer_copyright' => $footer_copyright
+                    'footer_profile' => $footer_profile,
+                    'footer_sosmed' => $footer_sosmed,
+                    'footer_copyright' => $footer_copyright,
                 ]) ?>
             </div>
         </div>
