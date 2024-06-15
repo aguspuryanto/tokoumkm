@@ -85,18 +85,9 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>
-<!-- <link href="vendor/itsjavi/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css" rel="stylesheet"> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/css/bootstrap-colorpicker.min.css"/>
+<link href="<?= base_url('plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.css') ?>" rel="stylesheet">
 <?= $this->endSection() ?>
 
 <?= $this->section('javascript') ?>
-<!-- <script src="vendor/itsjavi/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/js/bootstrap-colorpicker.min.js"> </script>
-<script>
-    $(function () {
-      // Basic instantiation:
-      $('#color').colorpicker();
-      
-    });
-</script>
+<script src="<?= base_url('plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.js') ?>"></script>
 <?= $this->endSection() ?>

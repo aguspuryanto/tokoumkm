@@ -1,4 +1,4 @@
-        <form action="/home-page/store" method="post" enctype="multipart/form-data">
+        <form id="formHeader" action="/home-page/store" method="post" enctype="multipart/form-data">
             <div class="form-group col-md-6">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" id="title" name="title" required>
@@ -18,7 +18,7 @@
             <div class="form-group col-md-6">
                 <label for="color">Color</label>
                 <div class="input-group colorpicker-component">
-                    <input type="text" class="form-control" id="color" name="color" required>
+                    <input type="text" class="form-control" id="color" name="color" value="rgb(255, 128, 0)" required>
                     <span class="input-group-append">
                         <span class="input-group-text colorpicker-input-addon"><i style="background-color: rgb(0, 170, 187);"></i></span>
                     </span>
@@ -34,3 +34,13 @@
             <input type="hidden" name="form_type" value="header">
             <button type="submit" class="btn btn-primary">Add Setting</button>
         </form>
+
+<?= $this->section('javascript') ?>
+<script>
+    $(function () {
+      // Basic instantiation:
+      $('#color').colorpicker();
+      
+    });
+</script>
+<?= $this->endSection() ?>
