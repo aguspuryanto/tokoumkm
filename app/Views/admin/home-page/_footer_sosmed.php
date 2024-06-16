@@ -1,4 +1,10 @@
+<?php
+if(!empty($footer_sosmed) && is_array($footer_sosmed)) $footer_sosmed = $footer_sosmed[0];
+?>
 <form action="/home-page/store" method="post">
+            <?= csrf_field() ?>
+            <input type="hidden" name="id" value="<?= isset($footer_sosmed['id']) ? $footer_sosmed['id'] : '' ?>">
+            
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="color">Link Profile Facebook</label>
@@ -77,8 +83,13 @@
                     <input type="text" class="form-control" id="link_lazada" name="link_lazada" required>
                 </div>
                 <div class="form-group col-md-6 mt-2">
-                    <div class="custom-control custom-switch mt-4">
-                        <input type="checkbox" class="custom-control-input" id="tampilSwitch1" name="tampil">
+                    <label class="d-none" for="tampil">Tampil</label>                
+                    <select class="form-control d-none" id="tampil" name="tampil">
+                        <option value="yes" <?= isset($footer_sosmed['tampil']) && $footer_sosmed['tampil'] == 'yes' ? 'selected' : '' ?>>Yes</option>
+                        <option value="no" <?= isset($footer_sosmed['tampil']) && $footer_sosmed['tampil'] == 'no' ? 'selected' : '' ?>>No</option>
+                    </select>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="tampilSwitch1" name="tampil" <?= isset($footer_sosmed['tampil']) && $footer_sosmed['tampil'] == 'yes' ? 'checked' : '' ?>>
                         <label class="custom-control-label" for="tampilSwitch1">Tampilkan</label>
                     </div>
                 </div>

@@ -6,18 +6,18 @@ use CodeIgniter\Model;
 
 class HomePageTestimonyModel extends Model
 {
-    protected $table            = 'homepagetestimonies';
+    protected $table            = 'homepage_testimony';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['judul1', 'keterangan1', 'banner1', 'judul2', 'keterangan2', 'banner2', 'judul3', 'keterangan3', 'banner3', 'color'];
 
     protected bool $allowEmptyInserts = false;
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

@@ -3,6 +3,8 @@ if(!empty($header) && is_array($header)) $header = $header[0];
 ?>
         <form id="formHeader" action="/home-page/store" method="post" enctype="multipart/form-data">
             <?= csrf_field() ?>
+            <input type="hidden" name="id" value="<?= isset($footer_copyright['id']) ? $footer_copyright['id'] : '' ?>">
+
             <div class="form-group col-md-6">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" id="title" name="title" value="<?= $header['title'] ?>" required>
@@ -13,7 +15,10 @@ if(!empty($header) && is_array($header)) $header = $header[0];
             </div>
             <div class="form-group col-md-6">
                 <label for="favicon">Favicon</label>
-                <input type="file" class="form-control" id="favicon" name="favicon">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="favicon" name="favicon">
+                    <label class="custom-file-label" for="favicon">Choose file</label>
+                </div>
                 <div id="previewFavicon">
                     <?php if($header['favicon']): ?>
                         <img src="<?= base_url('uploads/'.$header['favicon']) ?>" class="img-thumbnail">
@@ -22,7 +27,10 @@ if(!empty($header) && is_array($header)) $header = $header[0];
             </div>
             <div class="form-group col-md-6">
                 <label for="logo">Logo</label>
-                <input type="file" class="form-control" id="logo" name="logo">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="logo" name="logo">
+                    <label class="custom-file-label" for="logo">Choose file</label>
+                </div>
                 <div id="previewLogo">
                     <?php if($header['logo']): ?>
                         <img src="<?= base_url('uploads/'.$header['logo']) ?>" class="img-thumbnail">
@@ -39,11 +47,15 @@ if(!empty($header) && is_array($header)) $header = $header[0];
                 </div>
             </div>
             <div class="form-group col-md-6">
-                <label for="tampil">Tampil</label>
-                <select class="form-control" id="tampil" name="tampil">
-                    <option value="yes" <?= ($header['tampil'] == 'yes') ? 'selected' : '' ?>>Yes</option>
-                    <option value="no" <?= ($header['tampil'] == 'no') ? 'selected' : '' ?>>No</option>
+                <label class="d-none" for="tampil">Tampil</label>                
+                <select class="form-control d-none" id="tampil" name="tampil">
+                    <option value="yes" <?= isset($header['tampil']) && $header['tampil'] == 'yes' ? 'selected' : '' ?>>Yes</option>
+                    <option value="no" <?= isset($header['tampil']) && $header['tampil'] == 'no' ? 'selected' : '' ?>>No</option>
                 </select>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="tampilSwitch1" name="tampil" <?= isset($header['tampil']) && $header['tampil'] == 'yes' ? 'checked' : '' ?>>
+                    <label class="custom-control-label" for="tampilSwitch1">Tampilkan</label>
+                </div>
             </div>
             <input type="hidden" name="form_type" value="header">
             <button type="submit" class="btn btn-primary">Simpan</button>

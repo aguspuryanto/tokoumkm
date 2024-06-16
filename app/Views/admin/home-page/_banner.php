@@ -8,7 +8,10 @@ if(!empty($banner) && is_array($banner)) $banner = $banner[0];
 
             <div class="form-group col-md-6">
                 <label for="banner1">Banner Promo 1</label>
-                <input type="file" class="form-control" id="banner1" name="banner1" value="<?= isset($banner['banner1']) ? $banner['banner1'] : '' ?>" required>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="banner1" name="banner1" value="<?= isset($banner['banner1']) ? $banner['banner1'] : '' ?>" required>
+                    <label class="custom-file-label" for="banner1">Choose file</label>
+                </div>
                 <div id="preview1" class="img-preview">
                     <?php if(isset($banner['banner1']) && $banner['banner1']): ?>
                         <img src="/uploads/<?= $banner['banner1'] ?>" class="img-thumbnail">
@@ -17,7 +20,10 @@ if(!empty($banner) && is_array($banner)) $banner = $banner[0];
             </div>
             <div class="form-group col-md-6">
                 <label for="banner2">Banner Promo 2</label>
-                <input type="file" class="form-control" id="banner2" name="banner2" value="<?= isset($banner['banner2']) ? $banner['banner2'] : '' ?>" required>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="banner2" name="banner2" value="<?= isset($banner['banner2']) ? $banner['banner2'] : '' ?>" required>
+                    <label class="custom-file-label" for="banner2">Choose file</label>
+                </div>
                 <div id="preview2" class="img-preview">
                     <?php if(isset($banner['banner2']) && $banner['banner2']): ?>
                         <img src="/uploads/<?= $banner['banner2'] ?>" class="img-thumbnail">
@@ -26,7 +32,10 @@ if(!empty($banner) && is_array($banner)) $banner = $banner[0];
             </div>
             <div class="form-group col-md-6">
                 <label for="banner3">Banner Promo 3</label>
-                <input type="file" class="form-control" id="banner3" name="banner3" value="<?= isset($banner['banner3']) ? $banner['banner3'] : '' ?>" required>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="banner3" name="banner3" value="<?= isset($banner['banner3']) ? $banner['banner3'] : '' ?>" required>
+                    <label class="custom-file-label" for="banner3">Choose file</label>
+                </div>
                 <div id="preview3" class="img-preview">
                     <?php if(isset($banner['banner3']) && $banner['banner3']): ?>
                         <img src="/uploads/<?= $banner['banner3'] ?>" class="img-thumbnail">
@@ -43,11 +52,15 @@ if(!empty($banner) && is_array($banner)) $banner = $banner[0];
                 </div>
             </div>
             <div class="form-group col-md-6">
-                <label for="tampil">Tampil</label>
-                <select class="form-control" id="tampil" name="tampil">
+                <label class="d-none" for="tampil">Tampil</label>                
+                <select class="form-control d-none" id="tampil" name="tampil">
                     <option value="yes" <?= isset($banner['tampil']) && $banner['tampil'] == 'yes' ? 'selected' : '' ?>>Yes</option>
                     <option value="no" <?= isset($banner['tampil']) && $banner['tampil'] == 'no' ? 'selected' : '' ?>>No</option>
                 </select>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="tampilSwitch1" name="tampil" <?= isset($banner['tampil']) && $banner['tampil'] == 'yes' ? 'checked' : '' ?>>
+                    <label class="custom-control-label" for="tampilSwitch1">Tampilkan</label>
+                </div>
             </div>
             <input type="hidden" name="form_type" value="banner">
             <button type="submit" class="btn btn-primary">Simpan</button>

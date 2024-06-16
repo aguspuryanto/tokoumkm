@@ -8,7 +8,10 @@ if(!empty($slider) && is_array($slider)) $slider = $slider[0];
 
             <div class="form-group col-md-6">
                 <label for="slider1">Slider 1</label>
-                <input type="file" class="form-control" id="slider1" name="slider1" required>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="slider1" name="slider1" required>
+                    <label class="custom-file-label" for="slider1">Choose file</label>
+                </div>
                 <div id="preview-slider1">
                     <?php if(isset($slider['slider1']) && $slider['slider1']): ?>
                         <img src="/uploads/<?= $slider['slider1'] ?>" class="img-thumbnail">
@@ -17,7 +20,10 @@ if(!empty($slider) && is_array($slider)) $slider = $slider[0];
             </div>
             <div class="form-group col-md-6">
                 <label for="slider2">Slider 2</label>
-                <input type="file" class="form-control" id="slider2" name="slider2" required>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="slider2" name="slider2" required>
+                    <label class="custom-file-label" for="slider2">Choose file</label>
+                </div>
                 <div id="preview-slider2">
                     <?php if(isset($slider['slider2']) && $slider['slider2']): ?>
                         <img src="/uploads/<?= $slider['slider2'] ?>" class="img-thumbnail">
@@ -26,7 +32,10 @@ if(!empty($slider) && is_array($slider)) $slider = $slider[0];
             </div>
             <div class="form-group col-md-6">
                 <label for="slider3">Slider 3</label>
-                <input type="file" class="form-control" id="slider3" name="slider3" required>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="slider3" name="slider3" required>
+                    <label class="custom-file-label" for="slider3">Choose file</label>
+                </div>
                 <div id="preview-slider3">
                     <?php if(isset($slider['slider3']) && $slider['slider3']): ?>
                         <img src="/uploads/<?= $slider['slider3'] ?>" class="img-thumbnail">
@@ -35,7 +44,10 @@ if(!empty($slider) && is_array($slider)) $slider = $slider[0];
             </div>
             <div class="form-group col-md-6">
                 <label for="slider4">Slider 4</label>
-                <input type="file" class="form-control" id="slider4" name="slider4" required>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="slider4" name="slider4" required>
+                    <label class="custom-file-label" for="slider4">Choose file</label>
+                </div>
                 <div id="preview-slider4">
                     <?php if(isset($slider['slider4']) && $slider['slider4']): ?>
                         <img src="/uploads/<?= $slider['slider4'] ?>" class="img-thumbnail">

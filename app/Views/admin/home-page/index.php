@@ -75,7 +75,7 @@
             </div>
             <div class="tab-pane fade" id="pills-footer" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <?= $this->include('admin/home-page/_footer', [
-                    'footer_profile' => $footer_profile,
+                    'footer_profil' => $footer_profil,
                     'footer_sosmed' => $footer_sosmed,
                     'footer_copyright' => $footer_copyright,
                 ]) ?>
