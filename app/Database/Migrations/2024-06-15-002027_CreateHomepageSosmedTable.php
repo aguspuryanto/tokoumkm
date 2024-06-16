@@ -43,6 +43,41 @@ class CreateHomepageSosmedTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'tampil_facebook'       => [
+                'type'       => 'ENUM',
+                'constraint' => ['yes', 'no'],
+                'default'    => 'yes',
+            ],
+            'tampil_instagram'       => [
+                'type'       => 'ENUM',
+                'constraint' => ['yes', 'no'],
+                'default'    => 'yes',
+            ],
+            'tampil_tiktok'       => [
+                'type'       => 'ENUM',
+                'constraint' => ['yes', 'no'],
+                'default'    => 'yes',
+            ],
+            'tampil_youtube'       => [
+                'type'       => 'ENUM',
+                'constraint' => ['yes', 'no'],
+                'default'    => 'yes',
+            ],
+            'tampil_tokopedia'       => [
+                'type'       => 'ENUM',
+                'constraint' => ['yes', 'no'],
+                'default'    => 'yes',
+            ],
+            'tampil_shopee'       => [
+                'type'       => 'ENUM',
+                'constraint' => ['yes', 'no'],
+                'default'    => 'yes',
+            ],
+            'tampil_lazada'       => [
+                'type'       => 'ENUM',
+                'constraint' => ['yes', 'no'],
+                'default'    => 'yes',
+            ],
             'created_at'  => [
                 'type'       => 'DATETIME',
                 'null'       => true,

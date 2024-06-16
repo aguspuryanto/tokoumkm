@@ -136,6 +136,31 @@ class HomePage extends ResourceController
             // $validation->setRules(['tampil' => 'required']);
         }
 
+        if($form_type == 'profil'){
+            $validation->setRules(['nama_usaha' => 'required']);
+            $validation->setRules(['wa_usaha' => 'required']);
+            $validation->setRules(['alamat_usaha' => 'required']);
+            $validation->setRules(['color' => 'required']);
+            // $validation->setRules(['tampil' => 'required']);
+        }
+
+        if($form_type == 'sosmed'){
+            $validation->setRules(['link_facebook' => 'required']);
+            $validation->setRules(['tampil_facebook' => 'required']);
+            $validation->setRules(['link_instagram' => 'required']);
+            $validation->setRules(['tampil_instagram' => 'required']);
+            $validation->setRules(['link_tiktok' => 'required']);
+            $validation->setRules(['tampil_tiktok' => 'required']);
+            $validation->setRules(['link_youtube' => 'required']);
+            $validation->setRules(['tampil_youtube' => 'required']);
+            $validation->setRules(['link_tokopedia' => 'required']);
+            $validation->setRules(['tampil_tokopedia' => 'required']);
+            $validation->setRules(['link_shopee' => 'required']);
+            $validation->setRules(['tampil_shopee' => 'required']);
+            $validation->setRules(['link_lazada' => 'required']);
+            $validation->setRules(['tampil_lazada' => 'required']);
+        }
+
         if($form_type == 'copyright'){
             $validation->setRules(['copyright' => 'required']);
             $validation->setRules(['tahun' => 'required']);            
@@ -397,6 +422,49 @@ class HomePage extends ResourceController
                     $banner3->move('uploads/', $banner3Name);
                     $data['banner3'] = $banner3Name;
                 }
+
+                if($this->request->getVar('id')){
+                    $data['id'] = $this->request->getVar('id');
+                }
+
+                $formModel->save($data);
+            }
+
+            if($form_type == 'profil'){
+                $formModel = new \App\Models\HomePageFooterProfilModel();
+                $data = [
+                    'nama_usaha' => $this->request->getVar('nama_usaha'),
+                    'alamat_usaha' => $this->request->getVar('alamat_usaha'),
+                    'wa_usaha' => $this->request->getVar('wa_usaha'),
+                    'color'       => $this->request->getVar('color'),
+                    'tampil'      => $this->request->getVar('tampil'),
+                ];
+
+                if($this->request->getVar('id')){
+                    $data['id'] = $this->request->getVar('id');
+                }
+
+                $formModel->save($data);
+            }
+
+            if($form_type == 'sosmed'){
+                $formModel = new \App\Models\HomePageFooterSosmedModel();
+                $data = [
+                    'link_facebook' => $this->request->getVar('link_facebook'),
+                    'tampil_facebook' => $this->request->getVar('tampil_facebook'),
+                    'link_instagram' => $this->request->getVar('link_instagram'),
+                    'tampil_instagram' => $this->request->getVar('tampil_instagram'),
+                    'link_tiktok' => $this->request->getVar('link_tiktok'),
+                    'tampil_tiktok' => $this->request->getVar('tampil_tiktok'),
+                    'link_youtube' => $this->request->getVar('link_youtube'),
+                    'tampil_youtube' => $this->request->getVar('tampil_youtube'),
+                    'link_tokopedia' => $this->request->getVar('link_tokopedia'),
+                    'tampil_tokopedia' => $this->request->getVar('tampil_tokopedia'),
+                    'link_shopee' => $this->request->getVar('link_shopee'),
+                    'tampil_shopee' => $this->request->getVar('tampil_shopee'),
+                    'link_lazada' => $this->request->getVar('link_lazada'),
+                    'tampil_lazada' => $this->request->getVar('tampil_lazada'),                    
+                ];
 
                 if($this->request->getVar('id')){
                     $data['id'] = $this->request->getVar('id');

@@ -7,11 +7,11 @@ if(!empty($header) && is_array($header)) $header = $header[0];
 
             <div class="form-group col-md-6">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" name="title" value="<?= $header['title'] ?>" required>
+                <input type="text" class="form-control" id="title" name="title" value="<?= isset($header['title']) ? $header['title'] : '' ?>" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="description">Description</label>
-                <textarea class="form-control" id="description" name="description" required><?= $header['description'] ?></textarea>
+                <textarea class="form-control" id="description" name="description" required><?= isset($header['description']) ? $header['description'] : '' ?></textarea>
             </div>
             <div class="form-group col-md-6">
                 <label for="favicon">Favicon</label>
@@ -20,7 +20,7 @@ if(!empty($header) && is_array($header)) $header = $header[0];
                     <label class="custom-file-label" for="favicon">Choose file</label>
                 </div>
                 <div id="previewFavicon">
-                    <?php if($header['favicon']): ?>
+                    <?php if(isset($header['favicon']) && $header['favicon']): ?>
                         <img src="<?= base_url('uploads/'.$header['favicon']) ?>" class="img-thumbnail">
                     <?php endif; ?>
                 </div>
@@ -32,7 +32,7 @@ if(!empty($header) && is_array($header)) $header = $header[0];
                     <label class="custom-file-label" for="logo">Choose file</label>
                 </div>
                 <div id="previewLogo">
-                    <?php if($header['logo']): ?>
+                    <?php if(isset($header['logo']) && $header['logo']): ?>
                         <img src="<?= base_url('uploads/'.$header['logo']) ?>" class="img-thumbnail">
                     <?php endif; ?>
                 </div>
@@ -40,7 +40,7 @@ if(!empty($header) && is_array($header)) $header = $header[0];
             <div class="form-group col-md-6">
                 <label for="color">Color</label>
                 <div id="cpHeader" class="input-group colorpicker-component">
-                    <input type="text" class="form-control" id="color" name="color" value="<?= ($header['color']) ? $header['color'] : '#305AA2' ?>" required>
+                    <input type="text" class="form-control" id="color" name="color" value="<?= isset($header['color']) ? $header['color'] : '#305AA2' ?>" required>
                     <span class="input-group-append">
                         <span class="input-group-text colorpicker-input-addon"><i style="background-color: rgb(0, 170, 187);"></i></span>
                     </span>

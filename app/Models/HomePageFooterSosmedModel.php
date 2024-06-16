@@ -12,7 +12,7 @@ class HomePageFooterSosmedModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['link_facebook', 'link_instagram', 'link_youtube', 'link_tokopedia', 'link_shopee', 'link_lazada', 'link_tiktok'];
+    protected $allowedFields    = ['link_facebook', 'link_instagram', 'link_youtube', 'link_tokopedia', 'link_shopee', 'link_lazada', 'link_tiktok', 'tampil_facebook', 'tampil_instagram', 'tampil_tiktok', 'tampil_youtube', 'tampil_tokopedia', 'tampil_shopee', 'tampil_lazada'];
 
     protected bool $allowEmptyInserts = false;
 

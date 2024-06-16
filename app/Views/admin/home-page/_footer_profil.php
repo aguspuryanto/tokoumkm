@@ -33,8 +33,8 @@ if(!empty($footer_profil) && is_array($footer_profil)) $footer_profil = $footer_
                     <option value="no" <?= isset($footer_profil['tampil']) && $footer_profil['tampil'] == 'no' ? 'selected' : '' ?>>No</option>
                 </select>
                 <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="tampilSwitch1" name="tampil" <?= isset($footer_profil['tampil']) && $footer_profil['tampil'] == 'yes' ? 'checked' : '' ?>>
-                    <label class="custom-control-label" for="tampilSwitch1">Tampilkan</label>
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" name="tampil" <?= isset($footer_profil['tampil']) && $footer_profil['tampil'] == 'yes' ? 'checked' : '' ?>>
+                    <label class="custom-control-label" for="customSwitch1">Tampilkan</label>
                 </div>
             </div>
             <input type="hidden" name="form_type" value="profil">
