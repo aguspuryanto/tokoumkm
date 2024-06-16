@@ -45,7 +45,7 @@ if(!empty($footer_profil) && is_array($footer_profil)) $footer_profil = $footer_
 <script>
     $(function () {
         // Basic instantiation:
-        $('#v').colorpicker({
+        $('#cpProfil').colorpicker({
             format: 'auto'
         });
       
