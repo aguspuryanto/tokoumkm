@@ -37,7 +37,7 @@ class CreateProductsTable extends Migration
             ],
             'status'      => [
                 'type'       => 'ENUM',
-                'constraint' => ['active', 'inactive'],
+                'constraint' => ['publish', 'draft'],
                 'default'    => 'active',
             ],
             'label'       => [

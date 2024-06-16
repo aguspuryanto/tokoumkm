@@ -4,6 +4,10 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
+        <?php if (session('msg') !== null) : ?>
+            <?= session('msg'); ?>
+        <?php endif; ?>
+
         <!-- Page Heading -->
         <h1 class="mt-0">Products</h1>
         <div class="text-right">
@@ -13,7 +17,7 @@
         <div class="card">
             <div class="card-body">
 
-                <?= $this->include('admin/products/_grid') ?>
+                <?= $this->include('admin/products/_grid', ['products' => $products]) ?>
             </div>
         </div>
     </div>

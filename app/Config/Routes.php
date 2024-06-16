@@ -52,6 +52,6 @@ $routes->get('/pengaturan/edit/(:num)', 'Pengaturan::edit/$1');
 $routes->post('/pengaturan/update/(:num)', 'Pengaturan::update/$1');
 $routes->get('/pengaturan/delete/(:num)', 'Pengaturan::delete/$1');
 
-$routes->set404Override(function () {
-    echo view('welcome_message');
-});
+// $routes->set404Override(function () {
+//     echo view('welcome_message');
+// });

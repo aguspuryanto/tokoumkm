@@ -1,34 +1,41 @@
-
-                <form action="/produk/store" method="post" enctype="multipart/form-data">
+<?php
+helper('my');
+// echo json_encode($product);
+$actionUrl = isset($product['id']) ? '/produk/update/' . $product['id'] : '/produk/store';
+?>
+                <form action="<?= $actionUrl ?>" method="post" enctype="multipart/form-data">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="id" value="<?= isset($product['id']) ? $product['id'] : '' ?>">
+                    
                     <div class="form-group">
                         <label for="nama_produk">Nama Produk</label>
-                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" required>
+                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" value="<?= isset($product['nama_produk']) ? $product['nama_produk'] : '' ?>" required>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="harga">Harga</label>
-                            <input type="number" step="0.01" class="form-control" id="harga" name="harga" required>
+                            <input type="number" step="0.01" class="form-control" id="harga" name="harga" value="<?= isset($product['harga']) ? $product['harga'] : '' ?>" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="harga_diskon">Harga Diskon</label>
-                            <input type="number" step="0.01" class="form-control" id="harga_diskon" name="harga_promo">
+                            <input type="number" step="0.01" class="form-control" id="harga_diskon" name="harga_promo" value="<?= isset($product['harga_promo']) ? $product['harga_promo'] : '' ?>">
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi</label>
-                        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"> <?= isset($product['deskripsi']) ? $product['deskripsi'] : '' ?></textarea>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="label">Label</label>
-                            <input type="text" class="form-control" id="label" name="label">
+                            <input type="text" class="form-control" id="label" name="label" value="<?= isset($product['label']) ? $product['label'] : '' ?>">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="label_warna">Label Warna</label>                            
                             <div id="cpProduct" class="input-group colorpicker-component">
-                                <input type="text" class="form-control" id="label_warna" name="label_warna" value="<?= isset($slider['color']) ? $slider['color'] : '#305AA2' ?>" required>
+                                <input type="text" class="form-control" id="label_warna" name="label_warna" value="<?= isset($product['label_warna']) ? $product['label_warna'] : '#305AA2' ?>" required>
                                 <span class="input-group-append">
                                     <span class="input-group-text colorpicker-input-addon"><i style="background-color: rgb(0, 170, 187);"></i></span>
                                 </span>
@@ -39,12 +46,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="link_order">Link Order</label>
-                            <input type="text" class="form-control" id="link_order" name="link_order">
+                            <input type="text" class="form-control" id="link_order" name="link_order" value="<?= isset($product['link_order']) ? $product['link_order'] : '' ?>">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="gambar">Foto Produk</label>
                             <div class="custom-file">
-                                <input type="file" class="form-control" id="gambar" name="gambar" required>
+                                <input type="file" class="form-control" id="gambar" name="gambar" <?= isset($product['gambar']) ? '' : 'required' ?>>
                                 <label class="custom-file-label" for="gambar">Choose file</label>
                             </div>
                         </div>
@@ -54,15 +61,19 @@
                         <div class="form-group col-md-6">
                             <label for="status">Status</label>
                             <select class="form-control" id="status" name="status">
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
+                                <option value="publish" <?= isset($product['status']) && $product['status'] == 'publish' ? 'selected' : '' ?>>Publish</option>
+                                <option value="draft" <?= isset($product['status']) && $product['status'] == 'draft' ? 'selected' : '' ?>>Draft</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <div id="preview"></div>
+                            <div id="preview">
+                                <?php if(isset($product['gambar']) && !empty($product['gambar'])): ?>
+                                    <img src="<?= getUploadPathProduct($product) . $product['gambar'] ?>" class="img-fluid">
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Tambah Product</button>
+                    <button type="submit" class="btn btn-primary"><?= isset($product['id']) ? 'Update Product' : 'Tambah Product' ?></button>
                 </form>
 
 <?= $this->section('javascript') ?>

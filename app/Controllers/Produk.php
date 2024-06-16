@@ -56,33 +56,41 @@ class Produk extends ResourceController
         // $validation->setRules(['label_color' => 'required']);
         // $validation->setRules(['link_order' => 'required']);
 
-        $model = new ProductModel();
-        $file = $this->request->getFile('gambar');
+        $isDataValid = $validation->withRequest($this->request)->run();
+        
+        // jika data valid, simpan ke database
+        if($isDataValid){
 
-        if ($file->isValid() && !$file->hasMoved()) {
-            $fileName = $file->getRandomName();
-            $file->move($uploads_path, $fileName);
+            $model = new ProductModel();
+            $file = $this->request->getFile('gambar');
 
-            $data = [
-                'gambar' => $fileName,
-                'nama_produk' => $this->request->getVar('nama_produk'),
-                'deskripsi' => $this->request->getVar('deskripsi'),
-                'harga' => $this->request->getVar('harga'),
-                'harga_diskon' => $this->request->getVar('harga_diskon'),
-                'status' => $this->request->getVar('status'),
-                'label' => $this->request->getVar('label'),
-                'label_color' => $this->request->getVar('label_color'),
-                'link_order' => $this->request->getVar('link_order'),
-            ];
+            if ($file->isValid() && !$file->hasMoved()) {
+                $fileName = $file->getRandomName();
+                $file->move($uploads_path, $fileName);
 
-            if($this->request->getVar('id')){
-                $data['id'] = $this->request->getVar('id');
+                $data = [
+                    'gambar' => $fileName,
+                    'nama_produk' => $this->request->getVar('nama_produk'),
+                    'deskripsi' => $this->request->getVar('deskripsi'),
+                    'harga' => $this->request->getVar('harga'),
+                    'harga_diskon' => $this->request->getVar('harga_diskon'),
+                    'status' => $this->request->getVar('status'),
+                    'label' => $this->request->getVar('label'),
+                    'label_color' => $this->request->getVar('label_color'),
+                    'link_order' => $this->request->getVar('link_order'),
+                ];
+
+                if($this->request->getVar('id')){
+                    $data['id'] = $this->request->getVar('id');
+                }
+
+                $model->save($data);
             }
 
-            $model->save($data);
+            return redirect()->to('/produk')->with('msg', '<div class="alert alert-success" role="alert">Data disimpan</div>');
+        } else {
+            return redirect()->to('/produk')->with('msg', '<div class="alert alert-danger" role="alert">' . $validation->listErrors() . '</div>');
         }
-
-        return redirect()->to('/products');
     }
 
     /**
@@ -106,6 +114,7 @@ class Produk extends ResourceController
     {
         $model = new ProductModel();
         $data['product'] = $model->find($id);
+        // echo json_encode($data['product']);
 
         return view('admin/products/_edit', $data);
     }
@@ -125,9 +134,15 @@ class Produk extends ResourceController
         $file = $this->request->getFile('gambar');
 
         $data = [
+            // 'gambar' => $fileName,
             'nama_produk' => $this->request->getVar('nama_produk'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
             'harga' => $this->request->getVar('harga'),
+            'harga_diskon' => $this->request->getVar('harga_diskon'),
             'status' => $this->request->getVar('status'),
+            'label' => $this->request->getVar('label'),
+            'label_color' => $this->request->getVar('label_color'),
+            'link_order' => $this->request->getVar('link_order'),
         ];
 
         if ($file->isValid() && !$file->hasMoved()) {
@@ -136,9 +151,10 @@ class Produk extends ResourceController
             $data['gambar'] = $fileName;
         }
 
+        echo json_encode($data);
         $model->update($id, $data);
 
-        return redirect()->to('/products');
+        // return redirect()->to('/produk');
     }
 
     /**
@@ -153,7 +169,7 @@ class Produk extends ResourceController
         $model = new ProductModel();
         $model->delete($id);
 
-        return redirect()->to('/products');
+        return redirect()->to('/produk');
     }
 
     private function ensureUploadsDirectoryExists()
