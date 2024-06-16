@@ -26,8 +26,13 @@
                             <input type="text" class="form-control" id="label" name="label">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="label_warna">Label Warna</label>
-                            <input type="text" class="form-control" id="label_warna" name="label_warna" placeholder="#000000">
+                            <label for="label_warna">Label Warna</label>                            
+                            <div id="cpProduct" class="input-group colorpicker-component">
+                                <input type="text" class="form-control" id="label_warna" name="label_warna" value="<?= isset($slider['color']) ? $slider['color'] : '#305AA2' ?>" required>
+                                <span class="input-group-append">
+                                    <span class="input-group-text colorpicker-input-addon"><i style="background-color: rgb(0, 170, 187);"></i></span>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
@@ -38,7 +43,10 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="gambar">Foto Produk</label>
-                            <input type="file" class="form-control" id="gambar" name="gambar" required>
+                            <div class="custom-file">
+                                <input type="file" class="form-control" id="gambar" name="gambar" required>
+                                <label class="custom-file-label" for="gambar">Choose file</label>
+                            </div>
                         </div>
                     </div>
 
@@ -54,5 +62,17 @@
                             <div id="preview"></div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add Product</button>
+                    <button type="submit" class="btn btn-primary">Tambah Product</button>
                 </form>
+
+<?= $this->section('javascript') ?>
+<script>
+    $(function () {
+        // Basic instantiation:
+        $('#cpProduct').colorpicker({
+            format: 'auto'
+        });
+      
+    });
+</script>
+<?= $this->endSection() ?>

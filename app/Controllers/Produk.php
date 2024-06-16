@@ -44,6 +44,18 @@ class Produk extends ResourceController
     {
         $uploads_path = $this->ensureUploadsDirectoryExists();
 
+        // lakukan validasi
+        $validation =  \Config\Services::validation();
+        $validation->setRules(['gambar' => 'required']);
+        $validation->setRules(['nama_produk' => 'required']);
+        $validation->setRules(['deskripsi' => 'required']);
+        $validation->setRules(['harga' => 'required']);
+        // $validation->setRules(['harga_diskon' => 'required']);
+        // $validation->setRules(['status' => 'required']);
+        // $validation->setRules(['label' => 'required']);
+        // $validation->setRules(['label_color' => 'required']);
+        // $validation->setRules(['link_order' => 'required']);
+
         $model = new ProductModel();
         $file = $this->request->getFile('gambar');
 
@@ -51,12 +63,23 @@ class Produk extends ResourceController
             $fileName = $file->getRandomName();
             $file->move($uploads_path, $fileName);
 
-            $model->save([
+            $data = [
                 'gambar' => $fileName,
                 'nama_produk' => $this->request->getVar('nama_produk'),
+                'deskripsi' => $this->request->getVar('deskripsi'),
                 'harga' => $this->request->getVar('harga'),
+                'harga_diskon' => $this->request->getVar('harga_diskon'),
                 'status' => $this->request->getVar('status'),
-            ]);
+                'label' => $this->request->getVar('label'),
+                'label_color' => $this->request->getVar('label_color'),
+                'link_order' => $this->request->getVar('link_order'),
+            ];
+
+            if($this->request->getVar('id')){
+                $data['id'] = $this->request->getVar('id');
+            }
+
+            $model->save($data);
         }
 
         return redirect()->to('/products');

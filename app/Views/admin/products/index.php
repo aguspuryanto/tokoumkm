@@ -10,33 +10,20 @@
             <a href="/produk/create" class="btn btn-primary mb-3">Add Product</a>
         </div>
         
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Image</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($products as $product): ?>
-                <tr>
-                    <td><?= $product['id'] ?></td>
-                    <td><img src="/uploads/<?= $product['gambar'] ?>" width="100"></td>
-                    <td><?= $product['nama_produk'] ?></td>
-                    <td><?= $product['harga'] ?></td>
-                    <td><?= $product['status'] ?></td>
-                    <td>
-                        <a href="/products/edit/<?= $product['id'] ?>" class="btn btn-warning">Edit</a>
-                        <a href="/products/delete/<?= $product['id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+        <div class="card">
+            <div class="card-body">
+
+                <?= $this->include('admin/products/_grid') ?>
+            </div>
+        </div>
     </div>
     
+<?= $this->endSection() ?>
+
+<?= $this->section('styles') ?>
+<link href="<?= base_url('plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.css') ?>" rel="stylesheet">
+<?= $this->endSection() ?>
+
+<?= $this->section('javascript') ?>
+<script src="<?= base_url('plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.js') ?>"></script>
 <?= $this->endSection() ?>
