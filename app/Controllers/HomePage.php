@@ -113,14 +113,20 @@ class HomePage extends ResourceController
                     $logo->move('uploads/', $logoName);
                 }
 
-                $formModel->save([
+                $data = [
                     'title'       => $this->request->getVar('title'),
                     'description' => $this->request->getVar('description'),
                     'favicon'     => $faviconName,
                     'logo'        => $logoName,
                     'color'       => $this->request->getVar('color'),
                     'tampil'      => $this->request->getVar('tampil'),
-                ]);
+                ];
+
+                if($this->request->getVar('id')){
+                    $data['id'] = $this->request->getVar('id');
+                }
+
+                $formModel->save($data);
             }
 
             if($form_type == 'slider'){
@@ -161,11 +167,9 @@ class HomePage extends ResourceController
                 ];
                 // echo json_encode($data);
 
-                // if($this->request->getVar('id')){
-                //     $formModel->where('id', $this->request->getVar('id'))->set($data)->update();
-                // } else {
-                //     $formModel->insert($data);
-                // }
+                if($this->request->getVar('id')){
+                    $data['id'] = $this->request->getVar('id');
+                }
 
                 $formModel->save($data);
             }
@@ -200,6 +204,10 @@ class HomePage extends ResourceController
                     'tampil' => $this->request->getVar('tampil'),
                 ];
 
+                if($this->request->getVar('id')){
+                    $data['id'] = $this->request->getVar('id');
+                }
+
                 $formModel->save($data);
             }
 
@@ -211,17 +219,17 @@ class HomePage extends ResourceController
                 ];
 
                 if($this->request->getVar('id')){
-                    $formModel->where('id', $this->request->getVar('id'))->set($data)->update();
-                } else {
-                    $formModel->save($data);
+                    $data['id'] = $this->request->getVar('id');
                 }
+
+                $formModel->save($data);
             }
 
             return redirect()->to('/home-page')->with('msg', '<div class="alert alert-success" role="alert">Data disimpan</div>');
         } else {
             // echo json_encode($pdata) . '<br>';
-            echo $validation->listErrors();
-            // return redirect()->to('/home-page')->with('msg', '<div class="alert alert-danger" role="alert">' . $validation->listErrors() . '</div>');
+            // echo $validation->listErrors();
+            return redirect()->to('/home-page')->with('msg', '<div class="alert alert-danger" role="alert">' . $validation->listErrors() . '</div>');
         }
     }
 
