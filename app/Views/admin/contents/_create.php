@@ -5,7 +5,8 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="mt-5">Tambah Generate Content</h1>
+        <h2 class="mt-0">Generate Content</h2>
+
         <div class="card">
             <div class="card-body">
 

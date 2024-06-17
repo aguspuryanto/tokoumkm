@@ -18,7 +18,7 @@
                             <td><img src="<?= getUploadPathProduct($product) . $product['gambar'] ?>" width="100"></td>
                             <td><?= $product['nama_produk'] ?></td>
                             <td><?= getCurrency($product['harga']) ?></td>
-                            <td><?= $product['status'] ?></td>
+                            <td><?= $product['pstatus'] ?></td>
                             <td>
                                 <a href="/produk/edit/<?= $product['id'] ?>" class="btn btn-warning">Edit</a>
                                 <a href="/produk/delete/<?= $product['id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>

@@ -5,9 +5,11 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="mt-0">Artikel</h1>
-        <div class="text-right">
-            <a href="/artikel/create" class="btn btn-primary mb-3">Tambah Artikel</a>
+        <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+            <h2 class="mt-0">Artikel</h2>
+            <div class="text-right">
+                <a href="/artikel/create" class="btn btn-primary mb-3">Tambah Artikel</a>
+            </div>
         </div>
 
         <div class="card">

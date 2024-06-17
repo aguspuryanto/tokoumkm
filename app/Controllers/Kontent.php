@@ -50,7 +50,7 @@ class Kontent extends ResourceController
             'list_kota_target'       => $this->request->getVar('list_kota_target'),
         ]);
 
-        return redirect()->to('/konten');
+        return redirect()->to('/konten')->with('msg', '<div class="alert alert-danger" role="alert">Data gagal disimpan</div>');
     }
 
     /**

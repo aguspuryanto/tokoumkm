@@ -25,7 +25,6 @@ class CreateProductsTable extends Migration
             ],
             'deskripsi'   => [
                 'type'       => 'TEXT',
-                'null'       => true,
             ],
             'harga'       => [
                 'type'       => 'DECIMAL',
@@ -35,10 +34,10 @@ class CreateProductsTable extends Migration
                 'type'       => 'DECIMAL',
                 'constraint' => '10,2',
             ],
-            'status'      => [
+            'pstatus'      => [
                 'type'       => 'ENUM',
                 'constraint' => ['publish', 'draft'],
-                'default'    => 'active',
+                'default'    => 'draft',
             ],
             'label'       => [
                 'type'       => 'VARCHAR',

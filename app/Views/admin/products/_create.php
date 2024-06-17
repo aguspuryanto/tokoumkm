@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="mt-5">Tambah Product</h1>
+        <h2 class="mt-0">Tambah Product</h2>
 
         <div class="card">
             <!-- <div class="card-header">Featured</div> -->

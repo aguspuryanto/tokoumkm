@@ -9,9 +9,11 @@
         <?php endif; ?>
 
         <!-- Page Heading -->
-        <h1 class="mt-0">Products</h1>
-        <div class="text-right">
-            <a href="/produk/create" class="btn btn-primary mb-3">Add Product</a>
+        <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+            <h2 class="mt-0">Produk</h2>
+            <div class="text-right">
+                <a href="/produk/create" class="btn btn-primary mb-3">Tambah Produk</a>
+            </div>
         </div>
         
         <div class="card">
@@ -21,13 +23,5 @@
             </div>
         </div>
     </div>
-    
-<?= $this->endSection() ?>
 
-<?= $this->section('styles') ?>
-<link href="<?= base_url('plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.css') ?>" rel="stylesheet">
-<?= $this->endSection() ?>
-
-<?= $this->section('javascript') ?>
-<script src="<?= base_url('plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.js') ?>"></script>
 <?= $this->endSection() ?>

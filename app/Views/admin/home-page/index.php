@@ -9,7 +9,7 @@
         <?php endif; ?>
 
         <!-- Page Heading -->
-        <h1 class="mt-0">Home Page</h1>
+        <h2 class="mt-0">Home Page</h2>
         <!-- <div class="text-right">
             <a href="/konten/create" class="btn btn-primary mb-3">Add Content</a>
         </div> -->

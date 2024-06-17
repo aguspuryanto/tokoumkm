@@ -4,7 +4,10 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="mt-5">Edit Product</h1>
+        <div class="float-left mr-3">
+            <a href="/produk/" class="btn btn-secondary mb-0"><i class="fas fa-arrow-left"></i> Kembali</a>
+        </div>
+        <h2 class="mt-0">Edit Product</h2>
 
         <div class="card">
             <!-- <div class="card-header">Featured</div> -->

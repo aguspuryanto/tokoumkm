@@ -5,7 +5,10 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="mt-5">Edit Artikel</h1>
+        <div class="float-left mr-3">
+            <a href="/artikel/" class="btn btn-secondary mb-0"><i class="fas fa-arrow-left"></i> Kembali</a>
+        </div>
+        <h2 class="mt-0">Edit Artikel</h2>
 
         <div class="card">
             <div class="card-body">
