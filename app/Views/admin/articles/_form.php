@@ -25,29 +25,49 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="deskripsi">Deskripsi</label>
-                <textarea class="form-control" rows="10" id="deskripsi" name="deskripsi" required></textarea>
+            <div class="row">
+                <div class="form-group col-md-7">
+                    <label for="deskripsi">Deskripsi</label>
+                    <textarea class="form-control" rows="10" id="deskripsi" name="deskripsi" required></textarea>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="gambar">Gambar</label>
+                    <input type="file" class="form-control" id="gambar" name="gambar" required>
+                    <div id="preview"></div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="gambar">Gambar</label>
-                <input type="file" class="form-control" id="gambar" name="gambar" required>
-            </div>
-            <div class="form-group">
-                <label for="label_seo">Label / Keyword Target (Meta Keyword SEO)</label>
-                <input type="text" class="form-control" id="label_seo" name="label_seo" required>
-            </div>
+
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
+                    <label for="author">Author</label>
+                    <input type="text" class="form-control" id="author" name="author" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="publish_at">Publish At</label>
+                    <input type="date" class="form-control" id="publish_at" name="publish_at" required>
+                </div>
+                <div class="form-group col-md-4">
                     <label for="status">Status</label>
                     <select class="form-control" id="status" name="status">
                         <option value="active">Active</option>
                         <option value="inactive">Inactive</option>
                     </select>
                 </div>
+            </div>
+
+            <div class="form-row">
                 <div class="form-group col-md-6">
-                    <div id="preview"></div>
+                    <label for="meta_title">Meta Title</label>
+                    <input type="text" class="form-control" id="meta_title" name="meta_title" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="label_seo">Meta Keyword</label>
+                    <input type="text" class="form-control" id="label_seo" name="label_seo" required>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="meta_desc">Meta Description</label>
+                    <input type="text" class="form-control" id="meta_desc" name="meta_desc" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Add Article</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
