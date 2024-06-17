@@ -42,7 +42,15 @@ class Produk extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        $model = $this->itemModel; //new ProductModel();
+        if (!$model->find($id)) {
+            return redirect()->to('/produk')->with('msg', '<div class="alert alert-danger" role="alert">Data tidak ditemukan</div>');
+        }
+
+        $data['product'] = $model->find($id);
+        // echo json_encode($data['product']);
+
+        return view('admin/products/_edit', $data);
     }
 
     /**

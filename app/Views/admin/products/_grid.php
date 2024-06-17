@@ -6,6 +6,7 @@
                             <th>ID</th>
                             <th>Image</th>
                             <th>Product Name</th>
+                            <th>Kategori</th>
                             <th>Price</th>
                             <th>Status</th>
                             <th>Actions</th>
@@ -17,11 +18,13 @@
                             <td><?= $product['id'] ?></td>
                             <td><img src="<?= getUploadPathProduct($product) . $product['gambar'] ?>" width="100"></td>
                             <td><?= $product['nama_produk'] ?></td>
+                            <td></td>
                             <td><?= getCurrency($product['harga']) ?></td>
                             <td><?= $product['pstatus'] ?></td>
                             <td>
-                                <a href="/produk/edit/<?= $product['id'] ?>" class="btn btn-warning">Edit</a>
-                                <a href="/produk/delete/<?= $product['id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                                <a href="/produk/show/<?= $product['id'] ?>" class="btn btn-success"><i class="fas fa-eye"></i> View</a>
+                                <a href="/produk/edit/<?= $product['id'] ?>" class="btn btn-info"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="/produk/delete/<?= $product['id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i> Delete</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>

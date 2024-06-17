@@ -2,6 +2,8 @@
 helper('my');
 // echo json_encode($product);
 $actionUrl = isset($product['id']) ? '/produk/update/' . $product['id'] : '/produk/store';
+$currentUrl = site_url(uri_string());
+// echo json_encode($currentUrl);
 ?>
                 <form action="<?= $actionUrl ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field() ?>
