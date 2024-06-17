@@ -1,13 +1,30 @@
 
         <form action="/artikel/store" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="judul">Judul</label>
-                <input type="text" class="form-control" id="judul" name="judul" required>
+            <?= csrf_field() ?>
+            <input type="hidden" name="id" value="<?= isset($product['id']) ? $product['id'] : '' ?>">
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="judul">Title</label>
+                    <input type="text" class="form-control" id="judul" name="judul" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="slug">Slug Url</label>
+                    <input type="text" class="form-control" id="slug" name="slug" required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="slug">Slug Url</label>
-                <input type="text" class="form-control" id="slug" name="slug" required>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="category">Category</label>
+                    <input type="text" class="form-control" id="category" name="category" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="tags">Tags</label>
+                    <input type="text" class="form-control" id="tags" name="tags" required>
+                </div>
             </div>
+
             <div class="form-group">
                 <label for="deskripsi">Deskripsi</label>
                 <textarea class="form-control" rows="10" id="deskripsi" name="deskripsi" required></textarea>

@@ -5,9 +5,11 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h2 class="mt-0">Tambah Artikel</2>
-
+        <!-- <h2 class="mt-0">Tambah Artikel</h2> -->
         <div class="card">
+            <div class="card-header">
+                Tambah Artikel
+            </div>
             <div class="card-body">
 
                 <?= $this->include('admin/articles/_form') ?>

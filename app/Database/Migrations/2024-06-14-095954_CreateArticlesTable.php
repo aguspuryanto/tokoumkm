@@ -24,6 +24,14 @@ class CreateArticlesTable extends Migration
                 'constraint' => '255',
                 'unique'     => true,
             ],
+            'category_id' => [
+                'type'       => 'INT',
+                'constraint' => 5,
+            ],
+            'tags'        => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'deskripsi'   => [
                 'type'       => 'TEXT',
             ],
