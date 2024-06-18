@@ -12,7 +12,9 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "codeigniter4/framework": "^4.0",
-        "itsjavi/bootstrap-colorpicker": "^3.4"
+        "itsjavi/bootstrap-colorpicker": "^3.4",
+        "tinymce/tinymce": "^7.1",
+        "twbs/bootstrap": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",

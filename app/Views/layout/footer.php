@@ -46,13 +46,13 @@
     
     <!-- Bootstrap core JavaScript-->
     <script src="<?= base_url('plugins/jquery/jquery.min.js') ?>"></script>
-    <!-- <script src="<?= base_url('plugins/bootstrap/js/popper.min.js') ?>"></script> -->
     <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="<?= base_url('plugins/jquery-easing/jquery.easing.min.js') ?>"></script>
 
     <?= $this->renderSection('javascript') ?>
+    <?= $this->renderSection('pageScripts') ?>
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url('js/sb-admin-2.min.js') ?>"></script>
