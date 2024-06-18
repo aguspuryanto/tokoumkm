@@ -30,12 +30,21 @@ $currentUrl = site_url(uri_string());
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
+                            <label for="kategori">Kategori</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="kategori" name="kategori" value="<?= isset($product['kategori']) ? $product['kategori'] : '' ?>">
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
                             <label for="label">Label</label>
                             <input type="text" class="form-control" id="label" name="label" value="<?= isset($product['label']) ? $product['label'] : '' ?>">
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="label_color">Label Warna</label>                            
+                        <div class="form-group col-md-4">
+                            <label for="label_color">Label Warna</label>
                             <div id="cpProduct" class="input-group colorpicker-component">
                                 <input type="text" class="form-control" id="label_color" name="label_color" value="<?= isset($product['label_color']) ? $product['label_color'] : '#305AA2' ?>" required>
                                 <span class="input-group-append">
@@ -78,14 +87,35 @@ $currentUrl = site_url(uri_string());
                     <button type="submit" class="btn btn-primary"><?= isset($product['id']) ? 'Update Product' : 'Tambah Product' ?></button>
                 </form>
 
+                <?= $this->include('admin/products/_categori.php') ?>
 
-<?= $this->section('styles') ?>
+
+<?= $this->section('pageStyles') ?>
 <link href="<?= base_url('plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.css') ?>" rel="stylesheet">
+<style>
+.modal-dialog {
+    position: absolute !important;
+    margin: auto;
+    width: 320px;
+    height: 100%;
+    right: 0px;
+}
+.modal-content {
+    height: 100%;
+}
+</style>
 <?= $this->endSection() ?>
 
-<?= $this->section('javascript') ?>
+<?= $this->section('pageScripts') ?>
 <script src="<?= base_url('plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.js') ?>"></script>
+<script src="<?= base_url('plugins/tinymce/js/tinymce/tinymce.min.js') ?>" referrerpolicy="origin"></script>
 <script>
+    tinymce.init({
+        selector: '#deskripsi',
+        menubar: false,
+        license_key: 'gpl'
+    });
+
     $(function () {
         // Basic instantiation:
         $('#cpProduct').colorpicker({
@@ -97,8 +127,32 @@ $currentUrl = site_url(uri_string());
 
         photoInp.change(function (e) {
             imgURL = URL.createObjectURL(e.target.files[0]);
-            // $("#preview").attr("src", imgURL);
             $("#preview").html('<img src="' + imgURL + '" class="img-fluid">');
+        });
+
+        $(document).on('click', '#smallButton', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#smallModal').modal("show");
+                    $('#smallBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
         });
     });
 </script>
