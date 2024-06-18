@@ -4,6 +4,9 @@ helper('my');
 $actionUrl = isset($product['id']) ? '/produk/update/' . $product['id'] : '/produk/store';
 $currentUrl = site_url(uri_string());
 // echo json_encode($currentUrl);
+// $ishow = str_contains($currentUrl, 'show');
+$ishow = (strpos($currentUrl, 'show') !== false) ? true : false;
+// echo $ishow ? 'readonly' : '';
 ?>
                 <form action="<?= $actionUrl ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field() ?>
@@ -33,7 +36,13 @@ $currentUrl = site_url(uri_string());
                         <div class="form-group col-md-4">
                             <label for="kategori">Kategori</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="kategori" name="kategori" value="<?= isset($product['kategori']) ? $product['kategori'] : '' ?>">
+                                <!-- <input type="text" class="form-control" id="kategori" name="kategori" value="<?= isset($product['kategori']) ? $product['kategori'] : '' ?>"> -->
+                                <select class="form-control" id="kategori" name="kategori">
+                                    <option value="">Pilih Kategori</option>
+                                    <?php foreach($terms as $term): ?>
+                                        <option value="<?= $term['id'] ?>" <?= isset($product['id']) && $product['id'] == $term['id'] ? 'selected' : '' ?>><?= $term['name'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i></button>
                                 </div>
@@ -84,10 +93,10 @@ $currentUrl = site_url(uri_string());
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary"><?= isset($product['id']) ? 'Update Product' : 'Tambah Product' ?></button>
+                    <button type="submit" class="btn btn-primary" <?= ($ishow) ? 'disabled' : '' ?>><?= isset($product['id']) ? 'Update Product' : 'Tambah Product' ?></button>
                 </form>
 
-                <?= $this->include('admin/products/_categori.php') ?>
+                <?= $this->include('admin/products/_categori.php', ['terms' => $terms]) ?>
 
 
 <?= $this->section('pageStyles') ?>
@@ -130,26 +139,37 @@ $currentUrl = site_url(uri_string());
             $("#preview").html('<img src="' + imgURL + '" class="img-fluid">');
         });
 
-        $(document).on('click', '#smallButton', function(event) {
-            event.preventDefault();
-            let href = $(this).attr('data-attr');
+        $('#formCategory').submit(function(e){
+            e.preventDefault();
+            let href = $(this).attr('action');
+            console.log(href);
+
             $.ajax({
                 url: href,
+                type: 'POST',
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                cache: false,
                 beforeSend: function() {
-                    $('#loader').show();
+                    $(this).find('.btn-primary').html('<i class="fa fa-circle-o-notch fa-spin"></i> Loading...').prop('disabled', true);
                 },
                 // return the result
                 success: function(result) {
-                    $('#smallModal').modal("show");
-                    $('#smallBody').html(result).show();
+                    console.log(result);
+                    $('#exampleModalCenter').modal("hide");
+                    $('#kategori').html('').append(new Option('Pilih Kategori', ''));
+                    $.each(result.data, function(key, item) {
+                        $('#kategori').append(new Option(item.name, item.id));
+                    });
                 },
                 complete: function() {
-                    $('#loader').hide();
+                    // $('#loader').hide();
                 },
                 error: function(jqXHR, testStatus, error) {
                     console.log(error);
                     alert("Page " + href + " cannot open. Error:" + error);
-                    $('#loader').hide();
+                    // $('#loader').hide();
                 },
                 timeout: 8000
             })

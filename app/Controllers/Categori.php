@@ -27,6 +27,12 @@ class Categori extends ResourceController
     public function show($id = null)
     {
         //
+        $formModel = new \App\Models\CategoriModel();
+        $data = [
+            'success' => true,
+            'data'      => $formModel->select('id, name')->findAll(),
+        ];
+        return $this->response->setJSON($data);
     }
 
     /**
@@ -38,7 +44,8 @@ class Categori extends ResourceController
     {
         $formModel = new \App\Models\CategoriModel();
         $data = [
-            'name' => $this->request->getVar('name'),
+            'name' => $this->request->getVar('category'),
+            'slug' =>  url_title($this->request->getVar('category'), '-', true),
         ];
 
         if($this->request->getVar('id') != null){
@@ -48,7 +55,11 @@ class Categori extends ResourceController
             $formModel->insert($data);    
         }
 
-        // $formModel->insert($data);
+        $data = [
+            'success' => true,
+            'data'      => $formModel->select('id, name')->findAll(),
+        ];
+        return $this->response->setJSON($data);
     }
 
     /**

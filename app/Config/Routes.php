@@ -53,6 +53,14 @@ $routes->get('/pengaturan/edit/(:num)', 'Pengaturan::edit/$1');
 $routes->post('/pengaturan/update/(:num)', 'Pengaturan::update/$1');
 $routes->get('/pengaturan/delete/(:num)', 'Pengaturan::delete/$1');
 
+$routes->get('/category', 'Categori::index');
+$routes->get('/category/show', 'Categori::show');
+$routes->get('/category/create', 'Categori::create');
+$routes->post('/category/store', 'Categori::store');
+$routes->get('/category/edit/(:num)', 'Categori::edit/$1');
+$routes->post('/category/update/(:num)', 'Categori::update/$1');
+$routes->get('/category/delete/(:num)', 'Categori::delete/$1');
+
 // $routes->set404Override(function () {
 //     echo view('welcome_message');
 // });

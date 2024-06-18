@@ -20,7 +20,7 @@
         <div class="card">
             <div class="card-body">
 
-                <?= $this->include('admin/products/_grid', ['products' => $products]) ?>
+                <?= $this->include('admin/products/_grid', ['products' => $products, 'terms' => $terms]) ?>
             </div>
         </div>
     </div>

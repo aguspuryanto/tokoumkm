@@ -9,11 +9,11 @@
             </button>
         </div>
         <div class="modal-body">
-            <form id="formCategory" class="row g-3" action="/category/store" method="post" enctype="multipart/form-data">
+            <form id="formCategory" action="/category/store" method="post" enctype="multipart/form-data">
                 <?= csrf_field() ?>
                 <input type="hidden" name="id" value="<?= isset($category['id']) ? $category['id'] : '' ?>">
                 
-                <div class="form-row px-2">
+                <div class="form-row">
                     <div class="form-group col-8">
                         <label for="category" class="d-none">Category</label>
                         <input type="text" class="form-control" id="category" name="category" value="<?= isset($category['category']) ? $category['category'] : '' ?>" required>
@@ -23,6 +23,14 @@
                     </div>
                 </div>
             </form>
+
+            <ul class="list-group">
+            <?php foreach($terms as $term): ?>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <?= $term['name'] ?>
+                </li>
+            <?php endforeach; ?>
+            </ul>
         </div>
     </div>
 </div>

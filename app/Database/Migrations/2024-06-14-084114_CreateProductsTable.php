@@ -39,6 +39,10 @@ class CreateProductsTable extends Migration
                 'constraint' => ['publish', 'draft'],
                 'default'    => 'draft',
             ],
+            'kategori'       => [
+                'type'       => 'INT',
+                'constraint' => 5,
+            ],
             'label'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',

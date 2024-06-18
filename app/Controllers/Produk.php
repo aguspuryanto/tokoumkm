@@ -11,11 +11,13 @@ class Produk extends ResourceController
 {
     private $db;
     public $itemModel;
+    public $termsModel;
     
     public function __construct()
     {
         $this->db = \Config\Database::connect();
         $this->itemModel = new ProductModel();
+        $this->termsModel = new \App\Models\TermsModel();
         helper(["url","form"]);
     }
 
@@ -27,7 +29,10 @@ class Produk extends ResourceController
     public function index()
     {
         $model = $this->itemModel; //new ProductModel();
-        $data['products'] = $model->findAll();
+        $data['products']   = $model->findAll();
+
+        $terms = $this->termsModel;
+        $data['terms']      = $terms->findAll();
         
         return view('admin/products/index', $data);
         // return view('admin/produk');
@@ -48,6 +53,9 @@ class Produk extends ResourceController
         }
 
         $data['product'] = $model->find($id);
+
+        $terms = $this->termsModel;
+        $data['terms']      = $terms->findAll();
         // echo json_encode($data['product']);
 
         return view('admin/products/_edit', $data);
@@ -96,6 +104,7 @@ class Produk extends ResourceController
                     'harga' => $this->request->getVar('harga'),
                     'harga_diskon' => $this->request->getVar('harga_diskon'),
                     'pstatus' => $this->request->getVar('pstatus'),
+                    'kategori' => $this->request->getVar('kategori'),
                     'label' => $this->request->getVar('label'),
                     'label_color' => $this->request->getVar('label_color'),
                     'link_order' => $this->request->getVar('link_order'),
@@ -141,6 +150,9 @@ class Produk extends ResourceController
         // $model = $this->itemModel; //new ProductModel();
         $data['product'] = [];
 
+        $terms = $this->termsModel;
+        $data['terms'] = $terms->findAll();
+
         return view('admin/products/_create', $data);
     }
 
@@ -159,6 +171,9 @@ class Produk extends ResourceController
         }
 
         $data['product'] = $model->find($id);
+
+        $terms = $this->termsModel;
+        $data['terms'] = $terms->findAll();
         // echo json_encode($data['product']);
 
         return view('admin/products/_edit', $data);

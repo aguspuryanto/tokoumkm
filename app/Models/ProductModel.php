@@ -39,4 +39,9 @@ class ProductModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getCategori()
+    {
+        return $this->join('terms', 'products.terms_id = terms.id')->get();
+    }
 }

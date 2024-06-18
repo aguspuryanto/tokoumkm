@@ -18,7 +18,7 @@
                             <td><?= $product['id'] ?></td>
                             <td><img src="<?= getUploadPathProduct($product) . $product['gambar'] ?>" width="100"></td>
                             <td><?= $product['nama_produk'] ?></td>
-                            <td></td>
+                            <td><?= (new App\Models\TermsModel())->find($product['kategori'])['name'] ?></td>
                             <td><?= getCurrency($product['harga']) ?></td>
                             <td><?= $product['pstatus'] ?></td>
                             <td>
