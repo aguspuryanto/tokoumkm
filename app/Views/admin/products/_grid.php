@@ -1,6 +1,6 @@
 <?php helper('my'); ?>
 
-<table class="table table-bordered">
+<table id="products" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -9,7 +9,7 @@
                             <th>Kategori</th>
                             <th>Price</th>
                             <th>Status</th>
-                            <th>Actions</th>
+                            <th style="width: 150px;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -14,7 +14,7 @@
 
         <div class="card">
             <div class="card-body">
-                <table class="table table-bordered">
+                <table id="articles" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -49,4 +49,15 @@
         </div>
     </div>
 
+<?= $this->endSection() ?>
+
+<?= $this->section('pageStyles') ?>
+<link href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" rel="stylesheet">
+<?= $this->endSection() ?>
+
+<?= $this->section('pageScripts') ?>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<script>
+new DataTable('#articles');
+</script>
 <?= $this->endSection() ?>

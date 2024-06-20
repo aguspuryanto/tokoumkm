@@ -61,7 +61,7 @@
                     'submenu' => []
                 ),
                 array(
-                    'href' => 'pengaturan',
+                    'href' => base_url('pengaturan'),
                     'icon' => 'fas fa-fw fa-cogs',
                     'title' => 'Pengaturan',
                     'show_menu' => true,

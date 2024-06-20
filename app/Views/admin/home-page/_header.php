@@ -3,7 +3,7 @@ if(!empty($header) && is_array($header)) $header = $header[0];
 ?>
         <form id="formHeader" action="/home-page/store" method="post" enctype="multipart/form-data">
             <?= csrf_field() ?>
-            <input type="hidden" name="id" value="<?= isset($footer_copyright['id']) ? $footer_copyright['id'] : '' ?>">
+            <input type="hidden" name="id" value="<?= isset($header['id']) ? $header['id'] : '' ?>">
 
             <div class="form-group col-md-6">
                 <label for="title">Title</label>

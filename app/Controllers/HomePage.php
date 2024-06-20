@@ -185,7 +185,7 @@ class HomePage extends ResourceController
                     // 'favicon'     => $faviconName,
                     // 'logo'        => $logoName,
                     'color'       => $this->request->getVar('color'),
-                    'tampil'      => $this->request->getVar('tampil'),
+                    'tampil'      => ($this->request->getVar('tampil') == 'on' ? '1' : '0'),
                 ];
 
                 if ($faviconName) {
@@ -201,7 +201,7 @@ class HomePage extends ResourceController
                 if($this->request->getVar('id')){
                     $data['id'] = $this->request->getVar('id');
                 }
-
+                echo json_encode($data);
                 $formModel->save($data);
             }
 
@@ -487,7 +487,7 @@ class HomePage extends ResourceController
                 $formModel->save($data);
             }
 
-            return redirect()->to('/home-page')->with('msg', '<div class="alert alert-success" role="alert">Data disimpan</div>');
+            // return redirect()->to('/home-page')->with('msg', '<div class="alert alert-success" role="alert">Data disimpan</div>');
         } else {
             // echo json_encode($pdata) . '<br>';
             // echo $validation->listErrors();
