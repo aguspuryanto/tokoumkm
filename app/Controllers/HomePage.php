@@ -81,8 +81,8 @@ class HomePage extends ResourceController
         if($form_type == 'slider'){
             $validation->setRules(['slider1' => 'required']);
             $validation->setRules(['slider2' => 'required']);
-            $validation->setRules(['slider3' => 'required']);
-            $validation->setRules(['slider4' => 'required']);
+            // $validation->setRules(['slider3' => 'required']);
+            // $validation->setRules(['slider4' => 'required']);
             $validation->setRules(['color' => 'required']);
         }
 
