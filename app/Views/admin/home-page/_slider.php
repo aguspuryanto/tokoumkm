@@ -33,7 +33,7 @@ if(!empty($slider) && is_array($slider)) $slider = $slider[0];
             <div class="form-group col-md-6">
                 <label for="slider3">Slider 3</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="slider3" name="slider3" required>
+                    <input type="file" class="custom-file-input" id="slider3" name="slider3">
                     <label class="custom-file-label" for="slider3">Choose file</label>
                 </div>
                 <div id="preview-slider3">
@@ -45,7 +45,7 @@ if(!empty($slider) && is_array($slider)) $slider = $slider[0];
             <div class="form-group col-md-6">
                 <label for="slider4">Slider 4</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="slider4" name="slider4" required>
+                    <input type="file" class="custom-file-input" id="slider4" name="slider4">
                     <label class="custom-file-label" for="slider4">Choose file</label>
                 </div>
                 <div id="preview-slider4">
