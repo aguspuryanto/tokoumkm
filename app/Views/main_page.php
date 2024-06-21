@@ -9,10 +9,18 @@
     <link rel="stylesheet" href="<?= base_url('plugins/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-success navbar-expand">
-        <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
-        </div>
+    <nav class="navbar navbar-dark bg-light justify-content-between">
+        <a class="navbar-brand" href="#">
+            <img src="/uploads/oq15SNxkJQscqbVsgZat.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+        </a>
+        <form class="form-inline">
+            <div class="input-group">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-success my-0 my-sm-0" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
     </nav>
     
     <!-- Bottom Navbar -->
@@ -94,6 +102,14 @@
             </div>
         </div>
     </article>
-  
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="<?= base_url('plugins/jquery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script>
+        $('.carousel').carousel({
+            interval: 2000
+        });
+    </script>
 </body>
 </html>
