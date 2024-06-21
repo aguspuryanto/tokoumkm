@@ -14,7 +14,7 @@ class Home extends BaseController
         $this->db = \Config\Database::connect();
         // $this->itemModel = new ProductModel();
         // $this->termsModel = new \App\Models\TermsModel();
-        $this->homepageHeader = new \App\Models\HomepageHeaderModel();
+        $this->homepageHeader = new \App\Models\HomePageHeaderModel();
 
         helper(["url","form"]);
     }
