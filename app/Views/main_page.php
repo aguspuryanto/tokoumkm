@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?= base_url('plugins/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-dark bg-success navbar-expand">
         <div class="container">
             <a class="navbar-brand" href="#">Navbar</a>
         </div>
