@@ -27,7 +27,7 @@
     </div>
     
     <div class="container">
-        <nav class="navbar navbar-dark bg-success navbar-expand fixed-bottom">
+        <nav class="navbar navbar-dark bg-success navbar-expand fixed-bottom dx-md-none dx-lg-none dx-xl-none">
             <ul class="navbar-nav nav-justified w-100">
                 <li class="nav-item">
                     <a href="#" class="nav-link text-center">
