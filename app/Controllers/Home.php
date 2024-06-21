@@ -26,6 +26,8 @@ class Home extends BaseController
         $data['page_title'] = isset($homepageHeader['title']) ? $homepageHeader['title'] : 'Home Page';
         $data['page_description'] = isset($homepageHeader['description']) ? $homepageHeader['description'] : '';
 
+        $data['page_logo'] = isset($homepageHeader['logo']) ? $homepageHeader['logo'] : '';
+
         $data['siteHeader'] = $this->siteHeader();
 
         return view('main_page', $data);
