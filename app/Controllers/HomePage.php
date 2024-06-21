@@ -7,10 +7,14 @@ use CodeIgniter\RESTful\ResourceController;
 
 class HomePage extends ResourceController
 {
+    private $db;
+
     public function __construct() {        
         if (!session()->get('isLoggedIn')) {
             return redirect()->to('/login');
         }
+
+        $this->db = \Config\Database::connect();
     }
 
     /**
@@ -212,26 +216,26 @@ class HomePage extends ResourceController
                 $slider3 = $this->request->getFile('slider3');
                 $slider4 = $this->request->getFile('slider4');
 
-                $slider1Name = $slider1->isValid() && !$slider1->hasMoved() ? $slider1->getRandomName() : null;
-                $slider2Name = $slider2->isValid() && !$slider2->hasMoved() ? $slider2->getRandomName() : null;
-                $slider3Name = $slider3->isValid() && !$slider3->hasMoved() ? $slider3->getRandomName() : null;
-                $slider4Name = $slider4->isValid() && !$slider4->hasMoved() ? $slider4->getRandomName() : null;
+                // $slider1Name = $slider1->isValid() && !$slider1->hasMoved() ? $slider1->getRandomName() : null;
+                // $slider2Name = $slider2->isValid() && !$slider2->hasMoved() ? $slider2->getRandomName() : null;
+                // $slider3Name = $slider3->isValid() && !$slider3->hasMoved() ? $slider3->getRandomName() : null;
+                // $slider4Name = $slider4->isValid() && !$slider4->hasMoved() ? $slider4->getRandomName() : null;
 
-                if ($slider1Name) {
-                    $slider1->move('uploads/', $slider1Name);
-                }
+                // if ($slider1Name) {
+                //     $slider1->move('uploads/', $slider1Name);
+                // }
 
-                if ($slider2Name) {
-                    $slider2->move('uploads/', $slider2Name);
-                }
+                // if ($slider2Name) {
+                //     $slider2->move('uploads/', $slider2Name);
+                // }
 
-                if ($slider3Name) {
-                    $slider3->move('uploads/', $slider3Name);
-                }
+                // if ($slider3Name) {
+                //     $slider3->move('uploads/', $slider3Name);
+                // }
 
-                if ($slider4Name) {
-                    $slider4->move('uploads/', $slider4Name);
-                }
+                // if ($slider4Name) {
+                //     $slider4->move('uploads/', $slider4Name);
+                // }
 
                 $data = [
                     // 'slider1' => $slider1Name,
@@ -242,32 +246,49 @@ class HomePage extends ResourceController
                     'tampil'  => $this->request->getVar('tampil'),
                 ];
 
-                if ($slider1Name) {
-                    $slider1->move('uploads/', $slider1Name);
-                    $data['slider1'] = $slider1Name;
+
+                if ($slider1->isValid() && ! $slider1->hasMoved()) {
+                    $imgName = $slider1->getRandomName();
+                    $slider1->move('uploads/', $imgName);
+                    $data['slider1'] = $imgName;
                 }
 
-                if ($slider2Name) {
-                    $slider2->move('uploads/', $slider2Name);
-                    $data['slider2'] = $slider2Name;
+                if ($slider2->isValid() && ! $slider2->hasMoved()) {
+                    $imgName = $slider2->getRandomName();
+                    $slider2->move('uploads/', $imgName);
+                    $data['slider2'] = $imgName;
                 }
 
-                if ($slider3Name) {
-                    $slider3->move('uploads/', $slider3Name);
-                    $data['slider3'] = $slider3Name;
+                if ($slider3->isValid() && ! $slider3->hasMoved()) {
+                    $imgName = $slider3->getRandomName();
+                    $slider3->move('uploads/', $imgName);
+                    $data['slider3'] = $imgName;
                 }
 
-                if ($slider4Name) {
-                    $slider4->move('uploads/', $slider4Name);
-                    $data['slider4'] = $slider4Name;
+                if ($slider4->isValid() && ! $slider4->hasMoved()) {
+                    $imgName = $slider4->getRandomName();
+                    $slider4->move('uploads/', $imgName);
+                    $data['slider4'] = $imgName;
                 }
                 // echo json_encode($data);
 
                 if($this->request->getVar('id')){
                     $data['id'] = $this->request->getVar('id');
                 }
+                // echo json_encode($data);
 
                 $formModel->save($data);
+                // try {
+                //     // $model->insert($data);
+                //     $builder = $this->db->table('homepage_slider');
+                //     $res = $builder->insert($data);
+                //     if (!$res) {
+                //         throw new \Exception('Could not insert data');
+                //         // return redirect()->to('/produk')->with('msg', '<div class="alert alert-danger" role="alert">Data gagal disimpan</div>');
+                //     }
+                // } catch (\Exception $e) {
+                //     echo 'Caught exception: ',  $e->getMessage(), "\n", var_dump($e->getMessage());
+                // }
             }
 
             if($form_type == 'banner'){
@@ -487,7 +508,7 @@ class HomePage extends ResourceController
                 $formModel->save($data);
             }
 
-            return redirect()->to('/home-page')->with('msg', '<div class="alert alert-success" role="alert">Data disimpan</div>');
+            // return redirect()->to('/home-page')->with('msg', '<div class="alert alert-success" role="alert">Data disimpan</div>');
         } else {
             // echo json_encode($pdata) . '<br>';
             // echo $validation->listErrors();

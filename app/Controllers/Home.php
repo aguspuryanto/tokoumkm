@@ -8,6 +8,7 @@ class Home extends BaseController
     public $itemModel;
     public $termsModel;
     public $homepageHeader;
+    public $homepageSlider;
     
     public function __construct()
     {
@@ -15,6 +16,7 @@ class Home extends BaseController
         // $this->itemModel = new ProductModel();
         // $this->termsModel = new \App\Models\TermsModel();
         $this->homepageHeader = new \App\Models\HomePageHeaderModel();
+        $this->homepageSlider = new \App\Models\HomePageSliderModel();
 
         helper(["url","form"]);
     }
@@ -27,6 +29,17 @@ class Home extends BaseController
         $data['page_description'] = isset($homepageHeader['description']) ? $homepageHeader['description'] : '';
 
         $data['page_logo'] = isset($homepageHeader['logo']) ? $homepageHeader['logo'] : '';
+
+        $slider = $this->homepageSlider->asArray()->where(['tampil' => true])->findAll();        
+        $newSlider = [];
+        foreach ($slider as $slider) {
+            if($slider['slider1'] != null) array_push($newSlider, $slider['slider1']);
+            if($slider['slider2'] != null) array_push($newSlider, $slider['slider2']);
+            if($slider['slider3'] != null) array_push($newSlider, $slider['slider3']);
+            if($slider['slider4'] != null) array_push($newSlider, $slider['slider4']);
+        }
+
+        $data['sliders'] = $newSlider;
 
         $data['siteHeader'] = $this->siteHeader();
 

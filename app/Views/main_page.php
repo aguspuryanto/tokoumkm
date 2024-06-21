@@ -10,24 +10,25 @@
     <link href="<?= base_url('css/style.css') ?>" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-dark bg-light justify-content-between">
-            <a class="navbar-brand" href="#">
-                <img src="<?= (base_url('uploads/' . $page_logo)) ?? base_url('uploads/oq15SNxkJQscqbVsgZat.jpg') ?>" width="30" height="30" class="d-inline-block align-top" alt="">
-            </a>
-            <form class="form-inline">
-                <div class="input-group">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-success my-0 my-sm-0" type="submit">Search</button>
-                    </div>
+    <div class="xcontainer">
+    <nav class="navbar navbar-dark bg-light justify-content-between">
+        <a class="navbar-brand" href="#">
+            <img src="<?= (base_url('uploads/' . $page_logo)) ?? base_url('uploads/oq15SNxkJQscqbVsgZat.jpg') ?>" width="30" height="30" class="d-inline-block align-top" alt="">
+        </a>
+        <form class="form-inline">
+            <div class="input-group">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-success my-0 my-sm-0" type="submit">Search</button>
                 </div>
-            </form>
-        </nav>
+            </div>
+        </form>
+    </nav>
     </div>
     
     <div class="container">
         <nav class="navbar navbar-dark bg-success navbar-expand fixed-bottom dx-md-none dx-lg-none dx-xl-none">
+        <div class="container">
             <ul class="navbar-nav nav-justified w-100">
                 <li class="nav-item">
                     <a href="#" class="nav-link text-center">
@@ -64,6 +65,7 @@
                     </a>
                 </li>
             </ul>
+        </div>
         </nav>
     </div>
     
@@ -74,25 +76,25 @@
         </div>
     </div> -->
 
-    <article class="container">
-        <div class="jumbotron jumbotron-fluid mt-3">
+    <article class="xcontainer">
+        <div class="jumbotron jumbotron-fluid py-3">
             <div class="container">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <?php
+                foreach ($sliders as $key => $slider) {
+                    echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$key.'" class="'.($key == 0 ? 'active' : '').'"></li>';
+                }
+                ?>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                <img class="d-block w-100" src="uploads/2024/06/1718780567_01d3806452979933c8b0.png" alt="First slide">
-                </div>
-                <div class="carousel-item">
-                <img class="d-block w-100" src="uploads/2024/06/1718780567_01d3806452979933c8b0.png" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                <img class="d-block w-100" src="uploads/2024/06/1718780567_01d3806452979933c8b0.png" alt="Third slide">
-                </div>
+                <?php
+                foreach ($sliders as $key => $slider) {
+                    echo '<div class="carousel-item '.($key == 0 ? 'active' : '').'">
+                        <img class="d-block w-100" src="/uploads/'.$slider.'" alt="First slide">
+                    </div>';
+                }
+                ?>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -112,7 +114,7 @@
     <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
     <script>
         $('.carousel').carousel({
-            interval: 2000
+            interval: 5000
         });
     </script>
 </body>
