@@ -61,6 +61,13 @@ $routes->get('/category/edit/(:num)', 'Categori::edit/$1');
 $routes->post('/category/update/(:num)', 'Categori::update/$1');
 $routes->get('/category/delete/(:num)', 'Categori::delete/$1');
 
+$routes->get('/terms/(:any)', 'Home::kategori/$1');
+$routes->get('/product/(:num)', 'Home::product/$1');
+$routes->get('/search', 'Home::search');
+$routes->get('/akun', 'Home::akun');
+
+service('auth')->routes($routes);
+
 // $routes->set404Override(function () {
 //     echo view('welcome_message');
 // });

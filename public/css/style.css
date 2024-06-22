@@ -13,6 +13,10 @@ body {
   margin: auto;
 }
 
+#products {
+  margin-bottom: 95px;
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
